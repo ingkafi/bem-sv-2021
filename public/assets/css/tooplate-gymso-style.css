@@ -60,7 +60,10 @@ https://www.tooplate.com/view/2119-gymso-fitness
     --border-radius-small:  2px;
   }
 
-
+  .count
+  {
+    color:white;
+  }
   body {
     background: var(--white-color);
     font-family: var(--base-font-family);
