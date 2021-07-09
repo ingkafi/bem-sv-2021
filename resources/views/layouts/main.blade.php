@@ -3,8 +3,8 @@
 
 <head>
 
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ URL::asset('admin/assets/images/favicon.png') }}">
     <title>Welcome to BEM SV UNDIP 2021</title>
-
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta name="description" content="">
