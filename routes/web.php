@@ -26,6 +26,10 @@ Route::get('/proker', function () {
 Route::get('/profil', function () {
     return view('/main/profil');
 });
+Route::get('/login', function () {
+    return view('/main/login');
+});
+
 Route::get('/admin/dashboard', [PagesController::class, 'admin'])->name('admin');
 Route::get('/admin/kelola/info', [PagesController::class, 'info'])->name('info');
 Route::get('/admin/kelola/tampilan', [PagesController::class, 'tampilan'])->name('tampilan');
