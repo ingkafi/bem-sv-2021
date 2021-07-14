@@ -260,12 +260,13 @@
     <div class="form-container sign-up-container">
     </div>
     <div class="form-container sign-in-container">
-        <form action="#">
+        <form method="POST" action="{{ route('login') }}">
+            @csrf
             <h1>Masuk</h1>
-            <input type="username" placeholder="username" name="username" />
+            <input type="email" placeholder="email" name="email" />
             <input type="password" placeholder="password" name="password" />
             <a href="#">Lupa Password?</a>
-            <button>Masuk</button>
+            <button type="submit">Masuk</button>
             <a href="/">
                 << Kembali</a>
         </form>
