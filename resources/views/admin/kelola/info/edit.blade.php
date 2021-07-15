@@ -22,7 +22,16 @@
         <br>
         <hr>
         <div class="container-fluid">
-            <form action="/admin/kelola/info/edit" method="post" enctype="multipart/form-data">
+            <?php $images = json_decode($info->gambar); ?>
+            @foreach ($images as $file)
+                <div class="d-flex align-items-center">
+                    <div class="" style="display: block;margin: auto;"><img id=" myImg" style="object-fit: cover;"
+                            src="{{ asset('uploads/gambar/' . $file) }}" alt="{{ $info->judul }}" width="300"
+                            height="auto" />
+                    </div>
+                </div>
+            @endforeach <br>
+            <form action="/admin/kelola/info/{{ $info->id }}/edit" method="post" enctype="multipart/form-data">
                 @method('patch')
                 @csrf
                 <div class="row">
@@ -30,29 +39,22 @@
                         <div class="card-body">
                             <h4 class="card-title">Judul</h4>
                             <div class="form-group">
-                                <input type="text" name="judul" id="judul" class="form-control">
+                                <input type="text" name="judul" id="judul" class="form-control"
+                                    value="{{ $info->judul }}">
                                 @error('judul')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
                             <h4 class="card-title">Isi</h4>
                             <div class="form-group">
-                                <textarea class="form-control" rows="3" name="isi" id="isi"></textarea>
+                                <textarea class="form-control" rows="3" name="isi" id="isi">{{ $info->isi }}</textarea>
                                 @error('isi')
-                                    <div class="alert alert-danger">{{ $message }}</div>
-                                @enderror
-                            </div>
-                            <h4 class="card-title">Link</h4>
-                            <div class="form-group">
-                                <input class="form-control" type="text" name="link" id="link">
-                                @error('link')
-                                    <div class=" alert alert-danger">{{ $message }}
-                                    </div>
+                                    <div class=" alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
                             <h4 class="card-title">Upload Gambar</h4>
                             <fieldset class="form-group">
-                                <input type="file" class="form-control-file" id="imgInp" name="gambar[]" required autofocus>
+                                <input type="file" class="form-control-file" id="imgInp" name="gambar[]">
                                 @error('gambar.*')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror

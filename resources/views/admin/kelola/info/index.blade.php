@@ -52,66 +52,86 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <th><img style="width: 70px; height:70px ;object-fit: cover;"
-                                                    src="{{ asset('uploads/informasi/Undip.png') }}"
-                                                    class="img-fluid rounded-circle">
-                                            </th>
-                                            <td class="text-dark mb-0 font-16 font-weight-medium">
-                                                Berita Kehilangan
-                                            </td>
-                                            <td>
-                                                20 September 2021
-                                            </td>
-                                            <td>
-                                                Sugeng
-                                            </td>
-                                            <td>
-                                                <a href="/admin/kelola/info//show">
-                                                    <button type="button"
-                                                        class="btn waves-effect waves-light btn-rounded btn-outline-success">Lihat</button>
-                                                </a>
-                                                <a href="/admin/kelola/info/edit">
-                                                    <button type="button"
-                                                        class="btn waves-effect waves-light btn-rounded btn-outline-primary">Edit</button>
-                                                </a>
-                                                <button type="button" data-toggle="modal" data-target="#danger-header-modal"
-                                                    data-item=""
-                                                    class="btn waves-effect waves-light btn-rounded btn-outline-danger delete">Hapus</button>
-                                            </td>
-                                            <div id="danger-header-modal" class="modal fade" tabindex="-1" role="dialog"
-                                                aria-labelledby="danger-header-modalLabel" aria-hidden="true">
-                                                <div class="modal-dialog modal-dialog-centered">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header modal-colored-header bg-danger">
-                                                            <h4 id="danger-header-modalLabel">Apakah Anda Yakin?
-                                                            </h4>
-                                                            <button type="button" class="close" data-dismiss="modal"
-                                                                aria-hidden="true">×</button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <h5 class="mt-0">Informasi akan terhapus
-                                                            </h5>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <a href="/kelola/informasi/row->id/delete" id="lineitem">
-                                                                <button type="button" class="btn btn-danger">Hapus</button>
-                                                            </a>
-                                                            <button type="button" class="btn btn-light"
-                                                                data-dismiss="modal">Batal</button>
-                                                        </div>
-                                                    </div><!-- /.modal-content -->
-                                                </div><!-- /.modal-dialog -->
-                                            </div><!-- /.modal -->
-                                            <script>
-                                                $(document).on("click", ".delete", function() {
-                                                    var id = $(this).attr('data-item');
-                                                    $("#lineitem").attr("href",
-                                                        "/kelola/informasi/" + id + "/delete")
-                                                });
-                                            </script>
-                                        </tr>
+                                        @foreach ($infos as $row)
+
+                                            <tr>
+                                                <td>{{ $loop->iteration }}</td>
+                                                <?php $images = json_decode($row->gambar); ?>
+                                                @foreach ($images as $file)
+                                                    <?php
+                                                    $imageExtensions = ['jpg', 'jpeg', 'gif', 'png', 'bmp', 'svg', 'svgz', 'cgm', 'djv', 'djvu', 'ico', 'ief', 'jpe', 'pbm', 'pgm', 'pnm', 'ppm', 'ras', 'rgb', 'tif', 'tiff', 'wbmp', 'xbm', 'xpm', 'xwd'];
+                                                    $explodeImage = explode('.', $file);
+                                                    $extension = end($explodeImage);
+                                                    ?>
+                                                    <th><img style="width: 70px; height:70px ;object-fit: cover;"
+                                                            src="{{ asset('uploads/gambar/' . $file) }}"
+                                                            class="img-fluid rounded-circle">
+                                                    </th>
+                                                    <td class="text-dark mb-0 font-16 font-weight-medium">
+                                                        {{ $row->judul }}
+                                                    </td>
+                                                    <?php
+                                                    $monthNum = date('m', strtotime($row->created_at));
+                                                    $dateObj = DateTime::createFromFormat('!m', $monthNum);
+                                                    $monthName = $dateObj->format('F');
+                                                    ?>
+                                                    <td>{{ date('j', strtotime($row->created_at)) }} {{ $monthName }}
+                                                        {{ date('Y', strtotime($row->created_at)) }}
+                                                    </td>
+                                                    <td>
+                                                        {{ $row->created_by }}
+                                                    </td>
+                                                    <td>
+                                                        <a href="/admin/kelola/info/{{ $row->id }}/show">
+                                                            <button type="button"
+                                                                class="btn waves-effect waves-light btn-rounded btn-outline-success">Lihat</button>
+                                                        </a>
+                                                        <a href="/admin/kelola/info/{{ $row->id }}/edit">
+                                                            <button type="button"
+                                                                class="btn waves-effect waves-light btn-rounded btn-outline-primary">Edit</button>
+                                                        </a>
+                                                        <button type="button" data-toggle="modal"
+                                                            data-target="#danger-header-modal"
+                                                            data-item="{{ $row->id }}"
+                                                            class="btn waves-effect waves-light btn-rounded btn-outline-danger delete">Hapus</button>
+                                                    </td>
+                                                    <div id="danger-header-modal" class="modal fade" tabindex="-1"
+                                                        role="dialog" aria-labelledby="danger-header-modalLabel"
+                                                        aria-hidden="true" style="text-align: center">
+                                                        <div class="modal-dialog modal-dialog-centered">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header modal-colored-header bg-danger">
+                                                                    <h4 id="danger-header-modalLabel">Apakah Anda Yakin?
+                                                                    </h4>
+                                                                    <button type="button" class="close" data-dismiss="modal"
+                                                                        aria-hidden="true">×</button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <h5 class="mt-0">Informasi akan terhapus
+                                                                    </h5>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <a href="/admin/kelola/info/{{ $row->id }}/delete"
+                                                                        id="lineitem">
+                                                                        <button type="button"
+                                                                            class="btn btn-danger">Hapus</button>
+                                                                    </a>
+                                                                    <button type="button" class="btn btn-light"
+                                                                        data-dismiss="modal">Batal</button>
+                                                                </div>
+                                                            </div><!-- /.modal-content -->
+                                                        </div><!-- /.modal-dialog -->
+                                                    </div><!-- /.modal -->
+                                                    <script>
+                                                        $(document).on("click", ".delete", function() {
+                                                            var id = $(this).attr('data-item');
+                                                            $("#lineitem").attr("href",
+                                                                "/admin/kelola/info/" + id + "/delete")
+                                                        });
+                                                    </script>
+                                                @endforeach
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                                 <script>

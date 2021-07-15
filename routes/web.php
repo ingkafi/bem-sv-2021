@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\InfoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
 
@@ -45,10 +46,14 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin/kelola/user/edit', [PagesController::class, 'edituser'])->name('edituser');
 
     //info
-    Route::get('/admin/kelola/info', [PagesController::class, 'info'])->name('info');
-    Route::get('/admin/kelola/info/create', [PagesController::class, 'createinfo'])->name('createinfo');
-    Route::get('/admin/kelola/info/delete', [PagesController::class, 'deleteinfo'])->name('deleteinfo');
-    Route::get('/admin/kelola/info/edit', [PagesController::class, 'editinfo'])->name('editinfo');
+    Route::get('/admin/kelola/info', [InfoController::class, 'index'])->name('index');
+    Route::get('/admin/kelola/info/create', [InfoController::class, 'create'])->name('create');
+    Route::get('/admin/kelola/info/{info}/show', [InfoController::class, 'show'])->name('show');
+    Route::patch('/admin/kelola/info/create', [InfoController::class, 'store'])->name('store');
+    Route::get('/admin/kelola/info/{info}/delete', [InfoController::class, 'delete'])->name('delete');
+    Route::get('/admin/kelola/info/{info}/edit', [InfoController::class, 'edit'])->name('edit');
+    Route::patch('/admin/kelola/info/{info}/edit', [InfoController::class, 'update'])->name('update');
+  
 
     //Aspirasi
     Route::get('/admin/bem/aspirasi', [PagesController::class, 'aspirasi'])->name('aspirasi');

@@ -42,14 +42,6 @@
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
-                            <h4 class="card-title">Link</h4>
-                            <div class="form-group">
-                                <input class="form-control" type="text" name="link" id="link">
-                                @error('link')
-                                    <div class=" alert alert-danger">{{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
                             <h4 class="card-title">Upload Gambar</h4>
                             <fieldset class="form-group">
                                 <input type="file" class="form-control-file" id="imgInp" name="gambar[]" required autofocus>
@@ -62,7 +54,7 @@
                                 <button type="submit" id="submit"
                                     class="btn waves-effect waves-light btn-rounded btn-success">Submit</button>
                                 <a href="/admin/kelola/info"
-                                    class="btn waves-effect waves-light btn-rounded btn-danger">Batal</a>
+                                    class="btn waves-effect waves-light btn-rounded btn-outline-danger">Batal</a>
                             </div>
                         </div>
                     </div>

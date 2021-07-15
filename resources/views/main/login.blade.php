@@ -255,6 +255,7 @@
         color: #bf3c3c;
         text-decoration: none;
     }
+
 </style>
 <div class="container" id="container">
     <div class="form-container sign-up-container">
@@ -278,7 +279,8 @@
                 <button class="ghost" id="signIn">Sign In</button>
             </div>
             <div class="overlay-panel overlay-right">
-                <img class="card-img-top img-fluid" style="width: 70%" src="{{ asset('uploads/tampilan/login.png') }}" alt="Card image cap">
+                <img class="card-img-top img-fluid" style="width: 70%" src="{{ asset('uploads/tampilan/login.png') }}"
+                    alt="Card image cap">
             </div>
         </div>
     </div>
