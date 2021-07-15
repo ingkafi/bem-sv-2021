@@ -380,6 +380,15 @@ https://www.tooplate.com/view/2119-gymso-fitness
     min-height: 100vh;
     position: relative;
   }
+  .hero2 {
+    background-image: url('../images/background\ proker.png');
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+    vertical-align: middle;
+    min-height: 100vh;
+    position: relative;
+  }
 
 
   /*---------------------------------------

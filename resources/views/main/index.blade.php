@@ -189,6 +189,15 @@
                                     selengkapnya...</a></p>
                     </div>
                 </div>
+<<<<<<< Updated upstream
+=======
+
+            </div>
+            <br> <br>
+            <div style="text-align: center">
+                <p data-aos="fade-up" data-aos-delay="500">Baca informasi lainnya <a rel="nofollow" href="/informasi"
+                        target="_parent">disini</a></p>
+>>>>>>> Stashed changes
             </div>
 
         </div>
