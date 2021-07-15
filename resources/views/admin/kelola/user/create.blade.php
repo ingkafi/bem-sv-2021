@@ -29,18 +29,16 @@
                         <div class="card-body">
                             <h4 class="card-title">Nama</h4>
                             <div class="form-group">
-                                <input type="text" name="name" id="name" class="form-control"
-                                    style="text-transform:uppercase">
+                                <input type="text" name="name" id="name" class="form-control">
                                 @error('name')
-                                    <div class="alert alert-danger">NAMA tidak boleh kosong.</div>
+                                    <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
 
 
                             <h4 class="card-title">Email</h4>
                             <div class="form-group">
-                                <input type="email" name="email" id="email" class="form-control"
-                                    placeholder="nama@bemsv2021.com">
+                                <input type="email" name="email" id="email" class="form-control">
                                 @error('email')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror

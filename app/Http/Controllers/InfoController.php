@@ -62,7 +62,7 @@ class InfoController extends Controller
         );
         Info::create($form_data); 
         Alert::success('Berhasil', 'Informasi Berhasil Ditambahkan');
-        return redirect()->route('index')->with('success', 'Tambah Informasi Berhasil!');
+        return redirect()->route('index');
     }
 
     /**

@@ -46,120 +46,124 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>1</td>
-                                            {{-- <div class="mr-3"><img id="myImg"
+                                            @foreach ($users as $row)
+                                                <td>{{ $loop->iteration }}</td>
+                                                {{-- <div class="mr-3"><img id="myImg"
                                                         src="{{ asset('uploads/foto_siswa/' . $file) }}"
                                                         alt="{{ $row->nama }}" class="rounded-circle" width="45"
                                                         height="45" />
                                                 </div> --}}
-                                            <td class="">
-                                                <div class=" d-flex align-items-center">
-                                                    <div class="">
-                                                        <h5 class="text-dark mb-0 font-16 font-weight-medium">
-                                                            nama
-                                                        </h5>
-                                                        <span class="text-muted font-14">email@email</span>
+                                                <td class="">
+                                                    <div class=" d-flex align-items-center">
+                                                        <div class="">
+                                                            <h5 class="text-dark mb-0 font-16 font-weight-medium">
+                                                                {{ $row->name }}
+                                                            </h5>
+                                                            <span class="text-muted font-14">{{ $row->email }}</span>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                21 Januari 2021
-                                            </td>
-                                            <td class="font-weight-medium text-muted">
-                                                <a href="/admin/kelola/user/edit">
-                                                    <button type="button"
-                                                        class="btn waves-effect waves-light btn-rounded btn-outline-primary">Edit</button>
-                                                </a>
-                                                {{-- <a href="/admin/kelola/user/{{ $row->id }}/reset">
+                                                </td>
+                                                <?php
+                                                $monthNum = date('m', strtotime($row->created_at));
+                                                $dateObj = DateTime::createFromFormat('!m', $monthNum);
+                                                $monthName = $dateObj->format('F');
+                                                ?>
+                                                <td>{{ date('j', strtotime($row->created_at)) }} {{ $monthName }}
+                                                    {{ date('Y', strtotime($row->created_at)) }}
+                                                </td>
+                                                <td class="font-weight-medium text-muted">
+                                                    <a href="/admin/kelola/user/{{ $row->id }}/edit">
                                                         <button type="button"
-                                                            class="btn waves-effect waves-light btn-rounded btn-outline-danger"
-                                                            onclick="return confirm('Apakah anda yakin ingin reset password user {{ $row->name }}?')">Reset
+                                                            class="btn waves-effect waves-light btn-rounded btn-outline-primary">Edit</button>
+                                                    </a>
+                                                    <a>
+                                                        <button type="button" data-toggle="modal"
+                                                            data-target="#danger-header-modal-2"
+                                                            data-item="{{ $row->id }}"
+                                                            class="btn waves-effect waves-light btn-rounded btn-outline-danger reset">Reset
                                                             Password</button>
-                                                    </a> --}}
+                                                    </a>
+                                                    <div id="danger-header-modal-2" class="modal fade" tabindex="-1"
+                                                        role="dialog" aria-labelledby="danger-header-modalLabel"
+                                                        aria-hidden="true">
+                                                        <div class="modal-dialog modal-dialog-centered">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header modal-colored-header bg-danger">
+                                                                    <h4 id="danger-header-modalLabel">Apakah Anda Yakin?
+                                                                    </h4>
+                                                                    <button type="button" class="close" data-dismiss="modal"
+                                                                        aria-hidden="true">×</button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <h5 class="mt-0">Reset password user
+                                                                    </h5>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <a href="/admin/kelola/user/{{ $row->id }}/reset"
+                                                                        id="reset">
+                                                                        <button type="button" class="btn btn-danger">Reset
+                                                                            Password</button>
+                                                                    </a>
+                                                                    <button type="button" class="btn btn-light"
+                                                                        data-dismiss="modal">Batal</button>
+                                                                </div>
+                                                            </div><!-- /.modal-content -->
+                                                        </div><!-- /.modal-dialog -->
+                                                    </div><!-- /.modal -->
+                                                    <script>
+                                                        $(document).on("click", ".reset", function() {
+                                                            var id = $(this).attr('data-item');
+                                                            $("#reset").attr("href",
+                                                                "/admin/kelola/user/" + id + "/reset")
+                                                        });
+                                                    </script>
 
 
-                                                <a>
-                                                    <button type="button" data-toggle="modal"
-                                                        data-target="#danger-header-modal-2" data-item=""
-                                                        class="btn waves-effect waves-light btn-rounded btn-outline-danger reset">Reset
-                                                        Password</button>
-                                                </a>
-                                                <div id="danger-header-modal-2" class="modal fade" tabindex="-1"
-                                                    role="dialog" aria-labelledby="danger-header-modalLabel"
-                                                    aria-hidden="true">
-                                                    <div class="modal-dialog modal-dialog-centered">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header modal-colored-header bg-danger">
-                                                                <h4 id="danger-header-modalLabel">Apakah Anda Yakin?
-                                                                </h4>
-                                                                <button type="button" class="close" data-dismiss="modal"
-                                                                    aria-hidden="true">×</button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <h5 class="mt-0">Reset password user
-                                                                </h5>
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <a href="/admin/kelola/user/user-id/reset" id="reset">
-                                                                    <button type="button" class="btn btn-danger">Reset
-                                                                        Password</button>
-                                                                </a>
-                                                                <button type="button" class="btn btn-light"
-                                                                    data-dismiss="modal">Batal</button>
-                                                            </div>
-                                                        </div><!-- /.modal-content -->
-                                                    </div><!-- /.modal-dialog -->
-                                                </div><!-- /.modal -->
-                                                <script>
-                                                    $(document).on("click", ".reset", function() {
-                                                        var id = $(this).attr('data-item');
-                                                        $("#reset").attr("href",
-                                                            "/admin/kelola/user/" + id + "/reset")
-                                                    });
-                                                </script>
+                                                    <a>
+                                                        <button type="button" data-toggle="modal"
+                                                            data-target="#danger-header-modal"
+                                                            data-item="{{ $row->id }}"
+                                                            class="btn waves-effect waves-light btn-rounded btn-outline-danger delete">Hapus</button>
+                                                    </a>
+                                                    <div id="danger-header-modal" class="modal fade" tabindex="-1"
+                                                        role="dialog" aria-labelledby="danger-header-modalLabel"
+                                                        aria-hidden="true">
+                                                        <div class="modal-dialog modal-dialog-centered">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header modal-colored-header bg-danger">
+                                                                    <h4 id="danger-header-modalLabel">Apakah Anda Yakin?
+                                                                    </h4>
+                                                                    <button type="button" class="close" data-dismiss="modal"
+                                                                        aria-hidden="true">×</button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <h5 class="mt-0">Data user akan terhapus
+                                                                    </h5>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <a href="/admin/kelola/user/{{ $row->id }}/delete"
+                                                                        id="lineitem">
+                                                                        <button type="button"
+                                                                            class="btn btn-danger">Hapus</button>
+                                                                    </a>
+                                                                    <button type="button" class="btn btn-light"
+                                                                        data-dismiss="modal">Batal</button>
+                                                                </div>
+                                                            </div><!-- /.modal-content -->
+                                                        </div><!-- /.modal-dialog -->
+                                                    </div><!-- /.modal -->
+                                                    <script>
+                                                        $(document).on("click", ".delete", function() {
+                                                            var id = $(this).attr('data-item');
+                                                            $("#lineitem").attr("href",
+                                                                "/admin/kelola/user/" + id + "/delete")
+                                                        });
+                                                    </script>
 
-
-                                                <a>
-                                                    <button type="button" data-toggle="modal"
-                                                        data-target="#danger-header-modal" data-item=""
-                                                        class="btn waves-effect waves-light btn-rounded btn-outline-danger delete">Hapus</button>
-                                                </a>
-                                                <div id="danger-header-modal" class="modal fade" tabindex="-1" role="dialog"
-                                                    aria-labelledby="danger-header-modalLabel" aria-hidden="true">
-                                                    <div class="modal-dialog modal-dialog-centered">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header modal-colored-header bg-danger">
-                                                                <h4 id="danger-header-modalLabel">Apakah Anda Yakin?
-                                                                </h4>
-                                                                <button type="button" class="close" data-dismiss="modal"
-                                                                    aria-hidden="true">×</button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <h5 class="mt-0">Data user akan terhapus
-                                                                </h5>
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <a href="/admin/kelola/user/user-id/delete" id="lineitem">
-                                                                    <button type="button"
-                                                                        class="btn btn-danger">Hapus</button>
-                                                                </a>
-                                                                <button type="button" class="btn btn-light"
-                                                                    data-dismiss="modal">Batal</button>
-                                                            </div>
-                                                        </div><!-- /.modal-content -->
-                                                    </div><!-- /.modal-dialog -->
-                                                </div><!-- /.modal -->
-                                                <script>
-                                                    $(document).on("click", ".delete", function() {
-                                                        var id = $(this).attr('data-item');
-                                                        $("#lineitem").attr("href",
-                                                            "/admin/kelola/user/" + id + "/delete")
-                                                    });
-                                                </script>
-
-                                            </td>
+                                                </td>
 
                                         </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                                 <script>

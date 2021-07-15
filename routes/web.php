@@ -3,6 +3,7 @@
 use App\Http\Controllers\InfoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,10 +41,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin/kelola/tampilan', [PagesController::class, 'tampilan'])->name('tampilan');
 
     //USER
-    Route::get('/admin/kelola/user', [PagesController::class, 'user'])->name('user');
-    Route::get('/admin/kelola/user/create', [PagesController::class, 'createuser'])->name('createuser');
-    Route::get('/admin/kelola/user/delete', [PagesController::class, 'deleteuser'])->name('deleteuser');
-    Route::get('/admin/kelola/user/edit', [PagesController::class, 'edituser'])->name('edituser');
+    Route::get('/admin/kelola/user', [UserController::class, 'index'])->name('index');
+    Route::get('/admin/kelola/user/create', [UserController::class, 'create'])->name('create');
+    Route::patch('/admin/kelola/user/create', [UserController::class, 'store'])->name('store');
+    Route::get('/admin/kelola/user/{user}/delete', [UserController::class, 'delete'])->name('delete');
+    Route::get('/admin/kelola/user/{user}/reset', [UserController::class, 'reset'])->name('reset');
+    Route::get('/admin/kelola/user/{user}/edit', [UserController::class, 'edit'])->name('edit');
+    Route::patch('/admin/kelola/user/{user}/edit', [UserController::class, 'update'])->name('update');
 
     //info
     Route::get('/admin/kelola/info', [InfoController::class, 'index'])->name('index');
