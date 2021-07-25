@@ -43,7 +43,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     //Tampilan
     Route::get('/admin/kelola/tampilan', [TampilanController::class, 'index'])->name('indextampilan');
-    // Route::patch('/admin/kelola/tampilan/update', [TampilanController::class, 'update'])->name('update');
+    Route::patch('/admin/kelola/tampilan/update', [TampilanController::class, 'update'])->name('update');
 
     //USER
     Route::get('/admin/kelola/user', [UserController::class, 'index'])->name('index');
