@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Info extends Model
 {
-    protected $table ="infos";
-    protected $fillable =['judul', 'isi','file_path','created_by','updated_by'];
+    protected $table = "infos";
+    protected $fillable = ['judul', 'isi', 'file_path', 'created_by', 'updated_by'];
 }

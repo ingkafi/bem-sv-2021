@@ -14,7 +14,7 @@ class PagesController extends Controller
     {
         $tampilan = Tampilan::first();
         $infos = DB::table('infos')->get()->sortBy('created_at');
-        return view('/main/index', compact('tampilan','infos'));
+        return view('/main/index', compact('tampilan', 'infos'));
     }
     public function proker()
     {
@@ -23,16 +23,16 @@ class PagesController extends Controller
     }
     public function informasi()
     {
-        $info1 = DB::table('infos')->first();
-        $infos = DB::table('infos')->where('id','!=',$info1->id)->get()->sortBy('created_at');
+        $info1 = Info::first();
+        $infos = DB::table('infos')->where('id', '!=', $info1->id)->get()->sortBy('created_at');
         $tampilan = Tampilan::first();
-        return view('/main/info', compact('tampilan','info1','infos'));
+        return view('/main/info', compact('tampilan', 'info1', 'infos'));
     }
     public function showinformasi(Info $info)
     {
         $info = DB::table('infos')->where('id', $info->id)->first();
         $tampilan = Tampilan::first();
-        return view('/main/showinfo', compact('tampilan','info'));
+        return view('/main/showinfo', compact('tampilan', 'info'));
     }
 
 
@@ -42,7 +42,7 @@ class PagesController extends Controller
         $info = DB::table('infos')->get()->count();
         $aspirasi = DB::table('aspirasis')->get()->count();
         $user = DB::table('users')->get()->count();
-        return view('admin/dashboard', compact('info','aspirasi','user'));
+        return view('admin/dashboard', compact('info', 'aspirasi', 'user'));
     }
     public function tampilan()
     {

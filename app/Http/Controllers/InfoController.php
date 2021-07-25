@@ -76,7 +76,7 @@ class InfoController extends Controller
      * @param  \App\Models\Info  $info
      * @return \Illuminate\Http\Response
      */
-    
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -101,29 +101,29 @@ class InfoController extends Controller
         $request->validate([
             'judul' => 'required',
             'isi' => 'required',
-            ]);
-            
-            if ($request->hasFile('file')) {
+        ]);
 
-                $request->validate([
-                    'gambar' => 'mimes:jpeg,bmp,png,jpg' // Only allow .jpg, .bmp and .png file types.
-                ]);
-    
-                // Save the file locally in the storage/public/ folder under a new folder named /product
-                $name = $request->file->getClientOriginalName();
-                $request->file->move(public_path() . '/uploads/informasi/', $name);
-    
-                // Store the record, using the new file hashname which will be it's new filename identity.
-                Info::where('id',  $info->id)
+        if ($request->hasFile('file')) {
+
+            $request->validate([
+                'gambar' => 'mimes:jpeg,bmp,png,jpg' // Only allow .jpg, .bmp and .png file types.
+            ]);
+
+            // Save the file locally in the storage/public/ folder under a new folder named /product
+            $name = $request->file->getClientOriginalName();
+            $request->file->move(public_path() . '/uploads/informasi/', $name);
+
+            // Store the record, using the new file hashname which will be it's new filename identity.
+            Info::where('id',  $info->id)
                 ->update([
                     'judul' =>  $request->judul,
                     'isi' =>  $request->isi,
                     'created_by' =>  Auth::user()->name,
                     'file_path' => $name
                 ]);
-                $info->save(); // Finally, save the record.
-            }  
-        Alert::success('Berhasil', 'Informasi Berhasil Diedit');            
+            $info->save(); // Finally, save the record.
+        }
+        Alert::success('Berhasil', 'Informasi Berhasil Diedit');
         return redirect()->action([InfoController::class, 'index']);
     }
 
