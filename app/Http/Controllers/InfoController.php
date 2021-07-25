@@ -44,25 +44,30 @@ class InfoController extends Controller
         $request->validate([
             'judul' => 'required',
             'isi' => 'required',
-            'gambar.*' => 'required|mimes:jpeg,jpg,png,PNG'
         ]);
-        if ($request->hasfile('gambar')) {
-            foreach ($request->file('gambar') as $file) {
-                $name = $file->getClientOriginalName();
-                $file->move(public_path() . '/uploads/gambar/', $name);
-                $imgData[] = $name;
-            }
-            $request->gambar = json_encode($imgData);
+
+        // ensure the request has a file before we attempt anything else.
+        if ($request->hasFile('file')) {
+
+            $request->validate([
+                'gambar' => 'mimes:jpeg,bmp,png,jpg' // Only allow .jpg, .bmp and .png file types.
+            ]);
+
+            // Save the file locally in the storage/public/ folder under a new folder named /product
+            $name = $request->file->getClientOriginalName();
+            $request->file->move(public_path() . '/uploads/informasi/', $name);
+
+            // Store the record, using the new file hashname which will be it's new filename identity.
+            $info = new Info([
+                'judul' =>  $request->judul,
+                'isi' =>  $request->isi,
+                'created_by' =>  Auth::user()->name,
+                'file_path' => $name
+            ]);
+            $info->save(); // Finally, save the record.
         }
-        $form_data = array(
-            'judul'       =>   $request->judul,
-            'isi'        =>   $request->isi,
-            'gambar'            =>   $request->gambar,
-            'created_by' => Auth::user()->name,
-        );
-        Info::create($form_data); 
         Alert::success('Berhasil', 'Informasi Berhasil Ditambahkan');
-        return redirect()->route('index');
+        return redirect()->action([InfoController::class, 'index']);
     }
 
     /**
@@ -71,12 +76,7 @@ class InfoController extends Controller
      * @param  \App\Models\Info  $info
      * @return \Illuminate\Http\Response
      */
-    public function show(Info $info)
-    {
-        $info = DB::table('infos')->where('id', $info->id)->first();
-        return view('/admin/kelola/info/show', ['info' => $info]);
-    }
-
+    
     /**
      * Show the form for editing the specified resource.
      *
@@ -101,26 +101,30 @@ class InfoController extends Controller
         $request->validate([
             'judul' => 'required',
             'isi' => 'required',
-            'gambar.*' => 'mimes:jpeg,jpg,png,PNG'
             ]);
             
-        if ($request->hasfile('gambar')) {
-            foreach ($request->file('gambar') as $file) {
-                $name = $file->getClientOriginalName();
-                $file->move(public_path() . '/uploads/gambar/', $name);
-                $imgData[] = $name;
-            }
-            $info->gambar = json_encode($imgData);
-            $info->save();
-        }
-        Info::where('id',  $info->id)
-        ->update([
-            'judul' => $request->judul,
-            'isi' => $request->isi,
-            'created_by' => Auth::user()->name,
-            ]);    
+            if ($request->hasFile('file')) {
+
+                $request->validate([
+                    'gambar' => 'mimes:jpeg,bmp,png,jpg' // Only allow .jpg, .bmp and .png file types.
+                ]);
+    
+                // Save the file locally in the storage/public/ folder under a new folder named /product
+                $name = $request->file->getClientOriginalName();
+                $request->file->move(public_path() . '/uploads/informasi/', $name);
+    
+                // Store the record, using the new file hashname which will be it's new filename identity.
+                Info::where('id',  $info->id)
+                ->update([
+                    'judul' =>  $request->judul,
+                    'isi' =>  $request->isi,
+                    'created_by' =>  Auth::user()->name,
+                    'file_path' => $name
+                ]);
+                $info->save(); // Finally, save the record.
+            }  
         Alert::success('Berhasil', 'Informasi Berhasil Diedit');            
-        return redirect()->route('index');
+        return redirect()->action([InfoController::class, 'index']);
     }
 
     /**
@@ -134,7 +138,6 @@ class InfoController extends Controller
         $info = Info::where('id',  $request->route('info'));
         $info->delete();
         Alert::success('Berhasil', 'Informasi Telah Dihapus');
-
-        return redirect()->route('index');
+        return redirect()->action([InfoController::class, 'index']);
     }
 }

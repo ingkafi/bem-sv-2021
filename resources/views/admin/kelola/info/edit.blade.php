@@ -22,15 +22,13 @@
         <br>
         <hr>
         <div class="container-fluid">
-            <?php $images = json_decode($info->gambar); ?>
-            @foreach ($images as $file)
-                <div class="d-flex align-items-center">
-                    <div class="" style="display: block;margin: auto;"><img id=" myImg" style="object-fit: cover;"
-                            src="{{ asset('uploads/gambar/' . $file) }}" alt="{{ $info->judul }}" width="300"
-                            height="auto" />
-                    </div>
+            <div class="d-flex align-items-center">
+                <div class="" style="display: block;margin: auto;"><img id=" myImg" style="object-fit: cover;"
+                        src="{{ asset('uploads/informasi/' . $info->file_path) }}" alt="{{ $info->judul }}" width="300"
+                        height="auto" />
                 </div>
-            @endforeach <br>
+            </div>
+            <br>
             <form action="/admin/kelola/info/{{ $info->id }}/edit" method="post" enctype="multipart/form-data">
                 @method('patch')
                 @csrf
@@ -54,8 +52,8 @@
                             </div>
                             <h4 class="card-title">Upload Gambar</h4>
                             <fieldset class="form-group">
-                                <input type="file" class="form-control-file" id="imgInp" name="gambar[]">
-                                @error('gambar.*')
+                                <input type="file" class="form-control-file" id="imgInp" name="file">
+                                @error('file')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </fieldset>

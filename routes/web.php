@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AspirasiController;
 use App\Http\Controllers\InfoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
@@ -18,13 +19,11 @@ use App\Http\Controllers\TampilanController;
 */
 
 Route::get('/', [PagesController::class, 'home']);
+Route::get('/info', [PagesController::class, 'informasi']);
+Route::get('/info/{info}/show', [PagesController::class, 'showinformasi']);
+Route::get('/proker', [PagesController::class, 'proker']);
+Route::patch('/aspirasi', [AspirasiController::class, 'store']);
 
-Route::get('/informasi', function () {
-    return view('/main/informasi');
-});
-Route::get('/proker', function () {
-    return view('/main/proker');
-});
 Route::get('/profil', function () {
     return view('/main/profil');
 });
@@ -54,17 +53,17 @@ Route::group(['middleware' => 'auth'], function () {
     Route::patch('/admin/kelola/user/{user}/edit', [UserController::class, 'update'])->name('update');
 
     //info
-    Route::get('/admin/kelola/info', [InfoController::class, 'index'])->name('index');
-    Route::get('/admin/kelola/info/create', [InfoController::class, 'create'])->name('create');
-    Route::get('/admin/kelola/info/{info}/show', [InfoController::class, 'show'])->name('show');
-    Route::patch('/admin/kelola/info/create', [InfoController::class, 'store'])->name('store');
-    Route::get('/admin/kelola/info/{info}/delete', [InfoController::class, 'delete'])->name('delete');
-    Route::get('/admin/kelola/info/{info}/edit', [InfoController::class, 'edit'])->name('edit');
-    Route::patch('/admin/kelola/info/{info}/edit', [InfoController::class, 'update'])->name('update');
+    Route::get('/admin/kelola/info', [InfoController::class, 'index']);
+    Route::get('/admin/kelola/info/create', [InfoController::class, 'create']);
+    
+    Route::patch('/admin/kelola/info/create', [InfoController::class, 'store']);
+    Route::get('/admin/kelola/info/{info}/delete', [InfoController::class, 'delete']);
+    Route::get('/admin/kelola/info/{info}/edit', [InfoController::class, 'edit']);
+    Route::patch('/admin/kelola/info/{info}/edit', [InfoController::class, 'update']);
 
 
     //Aspirasi
-    Route::get('/admin/bem/aspirasi', [PagesController::class, 'aspirasi'])->name('aspirasi');
+    Route::get('/admin/bem/aspirasi', [AspirasiController::class, 'index'])->name('index');
 
     //PROGRAM
     Route::get('/admin/bem/program', [PagesController::class, 'program'])->name('program');

@@ -44,8 +44,8 @@
                             </div>
                             <h4 class="card-title">Upload Gambar</h4>
                             <fieldset class="form-group">
-                                <input type="file" class="form-control-file" id="imgInp" name="gambar[]" required autofocus>
-                                @error('gambar.*')
+                                <input type="file" class="form-control-file" id="imgInp" name="file" required autofocus>
+                                @error('file')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </fieldset>

@@ -16,7 +16,8 @@
     <link rel="stylesheet" href="{{ URL::asset('assets/css/font-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('assets/css/aos.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('assets/css/tooplate-gymso-style.css') }}">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     {{-- <link rel="stylesheet" href="css/font-awesome.min.css">
      <link rel="stylesheet" href="css/aos.css">
 
@@ -32,7 +33,8 @@
 
             <a class="navbar-brand" href="/">BEM SV UNDIP 2021</a>
 
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -43,7 +45,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="/informasi" class="nav-link smoothScroll">Informasi</a>
+                        <a href="/info" class="nav-link smoothScroll">Informasi</a>
                     </li>
 
                     <li class="nav-item">
@@ -109,7 +111,7 @@
     <div>
         @yield('content')
     </div>
-    <section class="contact section" id="contact">
+    <section class="contact section" id="contact" style="background-color: rgb(241, 241, 241)">
         <div class="container">
             <div class="row">
 
@@ -117,19 +119,18 @@
                     <h2 class="mb-0 pb-0" data-aos="fade-up" data-aos-delay="200">Punya Kritik & Saran?</h2>
                     <h2 class="mb-0 pb-2" data-aos="fade-up" data-aos-delay="200">Tulis Yuk!</h2>
 
-                    <form action="#" method="post" class="contact-form webform" data-aos="fade-up" data-aos-delay="400" role="form">
-                        <input type="text" class="form-control" name="cf-name" placeholder="Nama">
-
-                        {{-- <input type="email" class="form-control" name="cf-email" placeholder="Email"> --}}
-
-                        <textarea class="form-control" rows="11" name="cf-message" placeholder="Pesan"></textarea>
-
+                    <form action="/aspirasi" method="post" class="contact-form webform" data-aos="fade-up"
+                        data-aos-delay="400" role="form">
+                        @method('patch')
+                        @csrf
+                        <input type="text" class="form-control" name="nama" placeholder="Nama">
+                        <textarea class="form-control" rows="11" name="isi" placeholder="Pesan"></textarea>
                         <button type="submit" class="form-control" id="submit-button" name="submit">Kirim</button>
                     </form>
                 </div>
 
                 <div class="mx-auto mt-4 mt-lg-0 mt-md-0 col-lg-5 col-md-6 col-12">
-                    <h2 class="mb-4" data-aos="fade-up" data-aos-delay="600">Find Us!</h2>
+                    <h2 class="" data-aos="fade-up" data-aos-delay="600">Find Us!</h2>
 
                     <p data-aos="fade-up" data-aos-delay="800"><i class="fa fa-map-marker mr-1"></i> Semarang, Indonesia
                     </p>
@@ -140,7 +141,8 @@
                                  4. Copy only URL and paste it within the src="" field below
                                 -->
                     <div class="google-map" data-aos="fade-up" data-aos-delay="900">
-                        <iframe src="{{ $tampilan->link_maps }}" width="1920" height="250" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+                        <iframe src="{{ $tampilan->link_maps }}" width="700" height="400" frameborder="0"
+                            style="border:0;" allowfullscreen=""></iframe>
                     </div>
                 </div>
 
@@ -172,6 +174,7 @@
             </div>
         </div>
     </footer>
+    @include('sweetalert::alert')
 </body>
 
 </html>

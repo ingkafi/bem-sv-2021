@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateInfosTable extends Migration
+class CreateAspirasisTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateInfosTable extends Migration
      */
     public function up()
     {
-        Schema::create('infos', function (Blueprint $table) {
-            $table->id('id');
-            $table->string('judul');
+        Schema::create('aspirasis', function (Blueprint $table) {
+            $table->id();
+            $table->string('nama');
             $table->string('isi');
-            $table->string('file_path');
-            $table->string('created_by');
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ class CreateInfosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('infos');
+        Schema::dropIfExists('aspirasis');
     }
 }

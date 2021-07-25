@@ -49,11 +49,11 @@ class UserController extends Controller
         $form_data = array(
             'email'       =>   $request->email,
             'name'        =>   $request->name,
-            'password'            =>   Hash::make('adminbem123'),
+            'password'            =>   Hash::make('adminbemsv1'),
         );
         User::create($form_data); 
         Alert::success('Berhasil', 'User Berhasil Ditambahkan');
-        return redirect()->route('index');
+        return redirect()->action([UserController::class, 'index']);
     }
 
     /**
@@ -99,7 +99,7 @@ class UserController extends Controller
                 'email'       =>   $request->email,
             ]);
         Alert::success('Berhasil', 'Data User Berhasil Diedit');
-        return redirect()->route('index');
+        return redirect()->action([UserController::class, 'index']);;
     }
 
     /**
@@ -114,16 +114,16 @@ class UserController extends Controller
         $user->delete();
         Alert::success('Berhasil', 'User Telah Dihapus');
 
-        return redirect()->route('index');
+        return redirect()->action([UserController::class, 'index']);
     }
     public function reset(Request $request)
     {
         $userid = User::where('id', $request->route('user'));
         $userid
             ->update([
-                'password' => Hash::make('adminbem123'),
+                'password' => Hash::make('adminbemsv1'),
             ]);
             Alert::success('Berhasil', 'Password User Berhasil Direset');
-        return redirect()->route('index');
+        return redirect()->action([UserController::class, 'index']);
     }
 }

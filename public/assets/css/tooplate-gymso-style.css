@@ -385,6 +385,23 @@ a:focus {
     min-height: 100vh;
     position: relative;
 }
+.hero4 {
+    background-image: url("../images/gedung2.JPG");
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+    vertical-align: middle;
+    min-height: 100vh;
+    position: relative;
+}
+.hero3 {
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+    vertical-align: middle;
+    min-height: 75vh;
+    position: relative;
+}
 
 /*---------------------------------------
      CLASS               

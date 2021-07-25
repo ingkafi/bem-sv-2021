@@ -3,7 +3,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Info;
 use App\Models\Tampilan;
+use Illuminate\Support\Facades\DB;
 
 class PagesController extends Controller
 {
@@ -11,15 +13,36 @@ class PagesController extends Controller
     public function home()
     {
         $tampilan = Tampilan::first();
-        return view('/main/index', compact('tampilan'));
+        $infos = DB::table('infos')->get()->sortBy('created_at');
+        return view('/main/index', compact('tampilan','infos'));
     }
-
+    public function proker()
+    {
+        $tampilan = Tampilan::first();
+        return view('/main/proker', compact('tampilan'));
+    }
+    public function informasi()
+    {
+        $info1 = DB::table('infos')->first();
+        $infos = DB::table('infos')->where('id','!=',$info1->id)->get()->sortBy('created_at');
+        $tampilan = Tampilan::first();
+        return view('/main/info', compact('tampilan','info1','infos'));
+    }
+    public function showinformasi(Info $info)
+    {
+        $info = DB::table('infos')->where('id', $info->id)->first();
+        $tampilan = Tampilan::first();
+        return view('/main/showinfo', compact('tampilan','info'));
+    }
 
 
     //ADMIN-------------------------------------------------------------------------- 
     public function admin()
     {
-        return view('admin/dashboard');
+        $info = DB::table('infos')->get()->count();
+        $aspirasi = DB::table('aspirasis')->get()->count();
+        $user = DB::table('users')->get()->count();
+        return view('admin/dashboard', compact('info','aspirasi','user'));
     }
     public function tampilan()
     {

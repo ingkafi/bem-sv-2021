@@ -43,29 +43,37 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            {{-- <div class="mr-3"><img id="myImg"
+                                        @foreach ($aspirasi as $row)
+                                            <tr>
+
+                                                <td>{{ $loop->iteration }}</td>
+                                                {{-- <div class="mr-3"><img id="myImg"
                                                 src="{{ asset('uploads/foto_siswa/' . $file) }}"
                                                 alt="{{ $row->nama }}" class="rounded-circle" width="45"
                                                 height="45" />
                                             </div> --}}
-                                            <td>
-                                                <div class="d-flex align-items-center">
-                                                    <div class="">
-                                                        <h5 class="text-dark mb-0 font-16 font-weight-medium">
-                                                            nama
-                                                        </h5>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="">
+                                                            <h5 class="text-dark mb-0 font-16 font-weight-medium">
+                                                                {{ $row->nama }}
+                                                            </h5>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </td>
-                                            <td class="font-weight-medium">
-                                                Pesan
-
-                                            </td>
-                                            <td>1 Januari 2021</td>
-
-                                        </tr>
+                                                </td>
+                                                <td>
+                                                    {{ $row->isi }}
+                                                </td>
+                                                <?php
+                                                $monthNum = date('m', strtotime($row->created_at));
+                                                $dateObj = DateTime::createFromFormat('!m', $monthNum);
+                                                $monthName = $dateObj->format('F');
+                                                ?>
+                                                <td>{{ date('j', strtotime($row->created_at)) }} {{ $monthName }}
+                                                    {{ date('Y', strtotime($row->created_at)) }}
+                                                </td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                                 <script>
