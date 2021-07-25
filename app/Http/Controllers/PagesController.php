@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Info;
 use App\Models\Tampilan;
+use App\Models\Proker;
 use Illuminate\Support\Facades\DB;
 
 class PagesController extends Controller
@@ -18,8 +19,9 @@ class PagesController extends Controller
     }
     public function proker()
     {
+        $prokers =  Proker::get();
         $tampilan = Tampilan::first();
-        return view('/main/proker', compact('tampilan'));
+        return view('/main/proker', compact('tampilan', 'prokers'));
     }
     public function informasi()
     {

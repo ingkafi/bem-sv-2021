@@ -45,35 +45,35 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin/kelola/tampilan', [TampilanController::class, 'index'])->name('indextampilan');
     // Route::patch('/admin/kelola/tampilan/update', [TampilanController::class, 'update'])->name('update');
 
-    // //USER
-    // Route::get('/admin/kelola/user', [UserController::class, 'index'])->name('index');
-    // Route::get('/admin/kelola/user/create', [UserController::class, 'create'])->name('create');
-    // Route::patch('/admin/kelola/user/create', [UserController::class, 'store'])->name('store');
-    // Route::get('/admin/kelola/user/{user}/delete', [UserController::class, 'delete'])->name('delete');
-    // Route::get('/admin/kelola/user/{user}/reset', [UserController::class, 'reset'])->name('reset');
-    // Route::get('/admin/kelola/user/{user}/edit', [UserController::class, 'edit'])->name('edit');
-    // Route::patch('/admin/kelola/user/{user}/edit', [UserController::class, 'update'])->name('update');
+    //USER
+    Route::get('/admin/kelola/user', [UserController::class, 'index'])->name('index');
+    Route::get('/admin/kelola/user/create', [UserController::class, 'create'])->name('create');
+    Route::patch('/admin/kelola/user/create', [UserController::class, 'store'])->name('store');
+    Route::get('/admin/kelola/user/{user}/delete', [UserController::class, 'delete'])->name('delete');
+    Route::get('/admin/kelola/user/{user}/reset', [UserController::class, 'reset'])->name('reset');
+    Route::get('/admin/kelola/user/{user}/edit', [UserController::class, 'edit'])->name('edit');
+    Route::patch('/admin/kelola/user/{user}/edit', [UserController::class, 'update'])->name('update');
 
-    // //info
-    // Route::get('/admin/kelola/info', [InfoController::class, 'index']);
-    // Route::get('/admin/kelola/info/create', [InfoController::class, 'create']);
+    //info
+    Route::get('/admin/kelola/info', [InfoController::class, 'index']);
+    Route::get('/admin/kelola/info/create', [InfoController::class, 'create']);
 
-    // Route::patch('/admin/kelola/info/create', [InfoController::class, 'store']);
-    // Route::get('/admin/kelola/info/{info}/delete', [InfoController::class, 'delete']);
-    // Route::get('/admin/kelola/info/{info}/edit', [InfoController::class, 'edit']);
-    // Route::patch('/admin/kelola/info/{info}/edit', [InfoController::class, 'update']);
+    Route::patch('/admin/kelola/info/create', [InfoController::class, 'store']);
+    Route::get('/admin/kelola/info/{info}/delete', [InfoController::class, 'delete']);
+    Route::get('/admin/kelola/info/{info}/edit', [InfoController::class, 'edit']);
+    Route::patch('/admin/kelola/info/{info}/edit', [InfoController::class, 'update']);
 
 
-    // //Aspirasi
-    // Route::get('/admin/bem/aspirasi', [AspirasiController::class, 'index'])->name('index');
+    //Aspirasi
+    Route::get('/admin/bem/aspirasi', [AspirasiController::class, 'index'])->name('index');
 
-    // //PROGRAM
-    // Route::get('/admin/bem/program', [ProkerController::class, 'index'])->name('index');
-    // Route::get('/admin/bem/program/create', [ProkerController::class, 'create'])->name('create');
-    // Route::patch('/admin/bem/program/store', [ProkerController::class, 'store'])->name('store');
-    // Route::get('/admin/bem/program/{proker}/edit', [ProkerController::class, 'edit'])->name('edit');
-    // Route::patch('/admin/bem/program/{proker}/update', [ProkerController::class, 'update'])->name('update');
-    // Route::get('/admin/bem/program/{proker}/delete', [ProkerController::class, 'delete'])->name('delete');
+    //PROGRAM
+    Route::get('/admin/bem/program', [ProkerController::class, 'index'])->name('index');
+    Route::get('/admin/bem/program/create', [ProkerController::class, 'create'])->name('create');
+    Route::patch('/admin/bem/program/store', [ProkerController::class, 'store'])->name('store');
+    Route::get('/admin/bem/program/{proker}/edit', [ProkerController::class, 'edit'])->name('edit');
+    Route::patch('/admin/bem/program/{proker}/update', [ProkerController::class, 'update'])->name('update');
+    Route::get('/admin/bem/program/{proker}/delete', [ProkerController::class, 'delete'])->name('delete');
 
     //struktur
     Route::get('/admin/bem/struktur', [StrukturController::class, 'index'])->name('index');

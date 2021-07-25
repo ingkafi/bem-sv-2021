@@ -16,7 +16,7 @@ class CreateProkers extends Migration
         Schema::create('prokers', function (Blueprint $table) {
             $table->id();
             $table->string('proker');
-            $table->string('keterangan');
+            $table->longText('keterangan');
             $table->string('bidang');
             $table->string('gambar');
             $table->timestamps();
