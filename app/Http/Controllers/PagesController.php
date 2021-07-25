@@ -44,7 +44,8 @@ class PagesController extends Controller
         $info = DB::table('infos')->get()->count();
         $aspirasi = DB::table('aspirasis')->get()->count();
         $user = DB::table('users')->get()->count();
-        return view('admin/dashboard', compact('info', 'aspirasi', 'user'));
+        $proker = DB::table('prokers')->get()->count();
+        return view('admin/dashboard', compact('info', 'aspirasi', 'user', 'proker'));
     }
     public function tampilan()
     {
