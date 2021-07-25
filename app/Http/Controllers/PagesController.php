@@ -1,9 +1,22 @@
 <?php
 
+
 namespace App\Http\Controllers;
+
+use App\Models\Tampilan;
 
 class PagesController extends Controller
 {
+    //LANDING PAGE-------------------------------------------------------------------
+    public function home()
+    {
+        $tampilan = Tampilan::first();
+        return view('/main/index', compact('tampilan'));
+    }
+
+
+
+    //ADMIN-------------------------------------------------------------------------- 
     public function admin()
     {
         return view('admin/dashboard');
@@ -24,7 +37,6 @@ class PagesController extends Controller
     }
     public function deleteuser()
     {
-        
     }
     public function edituser()
     {
@@ -42,7 +54,6 @@ class PagesController extends Controller
     }
     public function deleteinfo()
     {
-        
     }
     public function editinfo()
     {
@@ -66,7 +77,6 @@ class PagesController extends Controller
     }
     public function deleteprogram()
     {
-        
     }
     public function editprogram()
     {
@@ -84,7 +94,6 @@ class PagesController extends Controller
     }
     public function deletestruktur()
     {
-        
     }
     public function editstruktur()
     {
@@ -102,7 +111,6 @@ class PagesController extends Controller
     }
     public function deletesurvei()
     {
-        
     }
     public function editsurvei()
     {

@@ -2,7 +2,7 @@
 
 @section('content')
 <!-- HERO -->
-<section class="hero d-flex flex-column justify-content-center align-items-center" id="home">
+<section class="hero d-flex flex-column justify-content-center align-items-center" style="background-image: url('/uploads/tampilan/{{ $tampilan->background }}')" id="home">
     <div class="bg-overlay"></div>
     <div class="container">
         <div class="row">
@@ -65,14 +65,12 @@
         <div class="row">
 
             <div class="mt-lg-5 mb-lg-0 mb-4 col-lg-5 col-md-10 mx-auto col-12">
-                <h2 class="mb-4" data-aos="fade-up" data-aos-delay="300">Hello, selamat datang di BEM SV UNDIP 2021
+                <h2 class="mb-4" data-aos="fade-up" data-aos-delay="300">{{ $tampilan->judul_sambutan }}
                 </h2>
 
-                <p data-aos="fade-up" data-aos-delay="400"><b>#CHAMPIONSEVERYWHERE</b> <br> <br>
-                    Dimaknai sebagai ungkapan bentuk semangat pemberdayaan dan pergerakan serta menandakan bahwa
-                    mahasiswa Sekolah Vokasi dapat berprestasi dimanapun dan kapanpun, yang ingin kami ciptakan
-                    untuk membawa perubahan besar Sekolah Vokasi agar dapat menebar nilai kebermanfaatan bagi
-                    seluruh mahasiswa Sekolah Vokasi</p>
+                <p data-aos="fade-up" data-aos-delay="400"><b>{{ $tampilan->hashtag }}</b> <br> <br>
+                    {{ $tampilan->kata_sambutan }}
+                </p>
 
                 <p data-aos="fade-up" data-aos-delay="500">Mau tau lebih tentang kami? <a rel="nofollow" href="https://www.tooplate.com/view/2119-gymso-fitness" target="_parent">Klik disini</a></p>
 
@@ -80,12 +78,12 @@
 
             <div class="ml-lg-auto col-lg-3 col-md-6 col-12" data-aos="fade-up" data-aos-delay="700">
                 <div class="team-thumb">
-                    <img src="{{ URL::asset('assets/images/team/team-image.jpg') }}" class="img-fluid" alt="Trainer">
+                    <img src="/uploads/tampilan/{{ $tampilan->gambar_ketua }}" class="img-fluid" alt="Trainer">
 
                     <div class="team-info d-flex flex-column">
 
-                        <h3>Muhammad Khadafi Rhamdani</h3>
-                        <span>Ketua BEM SV UNDIP 2021</span>
+                        <h3>{{ $tampilan->nama_ketua }}</h3>
+                        <span>{{ $tampilan->keterangan_ketua }}</span>
 
                         <ul class="social-icon mt-3">
                             <li><a href="#" class="fa fa-instagram"></a></li>
@@ -96,12 +94,12 @@
 
             <div class="mr-lg-auto mt-5 mt-lg-0 mt-md-0 col-lg-3 col-md-6 col-12" data-aos="fade-up" data-aos-delay="800">
                 <div class="team-thumb">
-                    <img src="{{ URL::asset('assets/images/team/team-image01.jpg') }}" class="img-fluid" alt="Trainer">
+                    <img src="/uploads/tampilan/{{ $tampilan->gambar_wakil }}" class="img-fluid" alt="Trainer">
 
                     <div class="team-info d-flex flex-column">
                         <br>
-                        <h3>Salsabila</h3>
-                        <span>Wakil Ketua BEM SV UNDIP 2021</span>
+                        <h3>{{ $tampilan->nama_wakil }}</h3>
+                        <span>{{ $tampilan->keterangan_wakil }}</span>
                         <br>
 
                         <ul class="social-icon mt-3">
@@ -189,23 +187,19 @@
                                     selengkapnya...</a></p>
                     </div>
                 </div>
-<<<<<<< Updated upstream
-=======
+                <<<<<<< Updated upstream=======</div>
+                    <br> <br>
+                    <div style="text-align: center">
+                        <p data-aos="fade-up" data-aos-delay="500">Baca informasi lainnya <a rel="nofollow" href="/informasi" target="_parent">disini</a></p>
+                        >>>>>>> Stashed changes
+                    </div>
 
             </div>
             <br> <br>
             <div style="text-align: center">
-                <p data-aos="fade-up" data-aos-delay="500">Baca informasi lainnya <a rel="nofollow" href="/informasi"
-                        target="_parent">disini</a></p>
->>>>>>> Stashed changes
+                <p data-aos="fade-up" data-aos-delay="500">Baca informasi lainnya <a rel="nofollow" href="https://www.tooplate.com/view/2119-gymso-fitness" target="_parent">disini</a></p>
             </div>
-
         </div>
-        <br> <br>
-        <div style="text-align: center">
-            <p data-aos="fade-up" data-aos-delay="500">Baca informasi lainnya <a rel="nofollow" href="https://www.tooplate.com/view/2119-gymso-fitness" target="_parent">disini</a></p>
-        </div>
-    </div>
 </section>
 
 
@@ -215,11 +209,11 @@
         <div class="row">
 
             <div class="col-lg-12 col-4 text-center">
-                <h6 data-aos="fade-up">Launching Kabinet</h6>
+                <h6 data-aos="fade-up">{{ $tampilan->judul_video }}</h6>
 
-                <h2 class="text-white" data-aos="fade-up" data-aos-delay="200">Cipta Jawara BEM SV 2021</h2><br><br>
+                <h2 class="text-white" data-aos="fade-up" data-aos-delay="200">{{ $tampilan->judul2_video }}</h2><br><br>
             </div>
-            <iframe data-aos="fade-up" data-aos-delay="200" width="1366" height="768" src="https://www.youtube.com/embed/fz2E2J3WUaU?autoplay=0&mute=1">
+            <iframe data-aos="fade-up" data-aos-delay="200" width="1366" height="768" src="{{ $tampilan->link_video }}">
             </iframe>
         </div>
     </div>

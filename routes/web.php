@@ -4,6 +4,7 @@ use App\Http\Controllers\InfoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\TampilanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,9 +17,8 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/', function () {
-    return view('/main/index');
-});
+Route::get('/', [PagesController::class, 'home']);
+
 Route::get('/informasi', function () {
     return view('/main/informasi');
 });
@@ -40,6 +40,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin/kelola/info', [PagesController::class, 'info'])->name('info');
     Route::get('/admin/kelola/tampilan', [PagesController::class, 'tampilan'])->name('tampilan');
 
+    //Tampilan
+    Route::get('/admin/kelola/tampilan', [TampilanController::class, 'index'])->name('indextampilan');
+    Route::patch('/admin/kelola/tampilan/update', [TampilanController::class, 'update'])->name('update');
+
     //USER
     Route::get('/admin/kelola/user', [UserController::class, 'index'])->name('index');
     Route::get('/admin/kelola/user/create', [UserController::class, 'create'])->name('create');
@@ -57,7 +61,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin/kelola/info/{info}/delete', [InfoController::class, 'delete'])->name('delete');
     Route::get('/admin/kelola/info/{info}/edit', [InfoController::class, 'edit'])->name('edit');
     Route::patch('/admin/kelola/info/{info}/edit', [InfoController::class, 'update'])->name('update');
-  
+
 
     //Aspirasi
     Route::get('/admin/bem/aspirasi', [PagesController::class, 'aspirasi'])->name('aspirasi');

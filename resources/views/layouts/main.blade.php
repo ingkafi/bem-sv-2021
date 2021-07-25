@@ -16,8 +16,7 @@
     <link rel="stylesheet" href="{{ URL::asset('assets/css/font-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('assets/css/aos.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('assets/css/tooplate-gymso-style.css') }}">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     {{-- <link rel="stylesheet" href="css/font-awesome.min.css">
      <link rel="stylesheet" href="css/aos.css">
 
@@ -33,8 +32,7 @@
 
             <a class="navbar-brand" href="/">BEM SV UNDIP 2021</a>
 
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -119,8 +117,7 @@
                     <h2 class="mb-0 pb-0" data-aos="fade-up" data-aos-delay="200">Punya Kritik & Saran?</h2>
                     <h2 class="mb-0 pb-2" data-aos="fade-up" data-aos-delay="200">Tulis Yuk!</h2>
 
-                    <form action="#" method="post" class="contact-form webform" data-aos="fade-up" data-aos-delay="400"
-                        role="form">
+                    <form action="#" method="post" class="contact-form webform" data-aos="fade-up" data-aos-delay="400" role="form">
                         <input type="text" class="form-control" name="cf-name" placeholder="Nama">
 
                         {{-- <input type="email" class="form-control" name="cf-email" placeholder="Email"> --}}
@@ -143,9 +140,7 @@
                                  4. Copy only URL and paste it within the src="" field below
                                 -->
                     <div class="google-map" data-aos="fade-up" data-aos-delay="900">
-                        <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7919.279731153339!2d110.43363807420486!3d-7.051535479627631!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e708c048655d6fd%3A0xc24f6ee77c4a6a79!2sSekolah%20Vokasi%20Undip!5e0!3m2!1sen!2sid!4v1620656674377!5m2!1sen!2sid"
-                            width="1920" height="250" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+                        <iframe src="{{ $tampilan->link_maps }}" width="1920" height="250" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
                     </div>
                 </div>
 
@@ -157,11 +152,10 @@
             <div class="row">
 
                 <div class="ml-auto col-lg-4 col-md-5">
-                    <p>Website ini dikelola oleh Biro Kantor Media Informasi BEM SV UNDIP 2021
+                    <p>{{ $tampilan->keterangan_contact }}
                     </p>
                     <p>
-                        Contact Person BEM SV Undip 2021 :
-                        08123123123 (Nama)
+                        {{ $tampilan->contact }}
                     </p>
                 </div>
 
