@@ -23,6 +23,11 @@ class PagesController extends Controller
         $tampilan = Tampilan::first();
         return view('/main/proker', compact('tampilan', 'prokers'));
     }
+    public function profil()
+    {
+        $tampilan = Tampilan::first();
+        return view('/main/profil', compact('tampilan'));
+    }
     public function informasi()
     {
         $info1 = Info::first();

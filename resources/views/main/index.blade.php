@@ -80,7 +80,8 @@
 
                 <div class="ml-lg-auto col-lg-3 col-md-6 col-12" data-aos="fade-up" data-aos-delay="700">
                     <div class="team-thumb">
-                        <img src="/uploads/tampilan/{{ $tampilan->gambar_ketua }}" class="img-fluid" alt="Trainer">
+                        <img src="/uploads/tampilan/{{ $tampilan->gambar_ketua }}" class="img-fluid"
+                            alt="{{ $tampilan->nama_ketua }}">
 
                         <div class="team-info d-flex flex-column">
 
@@ -97,7 +98,8 @@
                 <div class="mr-lg-auto mt-5 mt-lg-0 mt-md-0 col-lg-3 col-md-6 col-12" data-aos="fade-up"
                     data-aos-delay="800">
                     <div class="team-thumb">
-                        <img src="/uploads/tampilan/{{ $tampilan->gambar_wakil }}" class="img-fluid" alt="Trainer">
+                        <img src="/uploads/tampilan/{{ $tampilan->gambar_wakil }}" class="img-fluid"
+                            alt="{{ $tampilan->nama_wakil }}">
 
                         <div class="team-info d-flex flex-column">
                             <br>

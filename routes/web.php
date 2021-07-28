@@ -24,11 +24,8 @@ Route::get('/', [PagesController::class, 'home']);
 Route::get('/info', [PagesController::class, 'informasi']);
 Route::get('/info/{info}/show', [PagesController::class, 'showinformasi']);
 Route::get('/proker', [PagesController::class, 'proker']);
+Route::get('/profil', [PagesController::class, 'profil']);
 Route::patch('/aspirasi', [AspirasiController::class, 'store']);
-
-Route::get('/profil', function () {
-    return view('/main/profil');
-});
 
 // //login
 // Route::get('/login', function () {
