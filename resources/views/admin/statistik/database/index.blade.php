@@ -1,27 +1,94 @@
 @extends('layouts.app')
 
 @section('content')
-    <script src="http://demo.itsolutionstuff.com/plugin/jquery.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script>
-    <meta name="csrf-token" content="{{ csrf_token() }}">
     <div class="page-wrapper">
         <div class="page-breadcrumb">
             <div class="row">
                 <div class="col-7 align-self-center">
-                    <h2 class="page-title text-truncate text-dark font-weight-medium mb-1">Biro Statistik</h2>
+                    <h1 class="page-title text-truncate text-dark font-weight-medium mb-1">Kelola
+                    </h1>
                     <div class="d-flex align-items-center">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb m-0 p-0">
-                                <li class="breadcrumb-item"><a class="text-muted">Buletin</a></li>
+                                <li class="breadcrumb-item">
+                                <li>Tampilan Web </li>
                             </ol>
                         </nav>
                     </div>
+                    <hr>
                 </div>
             </div>
         </div>
-        <br>
-        <hr>
         <div class="container-fluid">
+            <input type="hidden" name="id" value="1">
+            <div class="card">
+                <div class="row">
+                    <div class="col-sm-12 col-md-6 col-lg-4">
+
+                        <div class="card-body">
+                            <h4 class="card-title">Prgram Studi</h4>
+
+                            <div class="form-group">
+                                <input type="text" name="header" id="header" placeholder="" value="" class="form-control">
+                                @error('header')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-md-6 col-lg-4">
+
+                        <div class="card-body">
+                            <h4 class="card-title">Mahasiswa</h4>
+
+                            <div class="form-group">
+                                <input type="text" name="header" id="header" placeholder="" value="" class="form-control">
+                                @error('header')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-4">
+
+                        <div class="card-body">
+                            <h4 class="card-title">Dosen</h4>
+                            <div class="form-group">
+                                <input type="text" name="header" id="header" placeholder="" value="" class="form-control">
+                                @error('header')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-4">
+
+                        <div class="card-body">
+                            <h4 class="card-title">Himpunan</h4>
+                            <div class="form-group">
+                                <input type="text" name="header" id="header" placeholder="" value="" class="form-control">
+                                @error('header')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-4">
+
+                        <div class="card-body">
+                            <h4 class="card-title">UKM</h4>
+                            <div class="form-group">
+                                <input type="text" name="header" id="header" placeholder="" value="" class="form-control">
+                                @error('header')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
             <div class="row">
                 <div class="col-12">
                     <div class="card">
@@ -166,38 +233,50 @@
                     </div>
                 </div>
             </div>
+            <div class="text-center">
+                <button type="submit" id="submit"
+                    class="btn waves-effect waves-light btn-rounded btn-success">Submit</button>
+                <a href="/admin/dashboard" class="btn waves-effect waves-light btn-rounded btn-danger">Batal</a>
+            </div>
         </div>
     </div>
-
-    {{-- JANGAN DIHAPUS SUL --}}
-
-    {{-- <div id="danger-header-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="danger-header-modalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header modal-colored-header bg-danger">
-                    <h4 id="danger-header-modalLabel">Apakah Anda Yakin?
-                    </h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                </div>
-                <div class="modal-body">
-                    <h5 class="mt-0">Informasi akan terhapus
-                    </h5>
-                </div>
-                <div class="modal-footer">
-                    <a href="/kelola/informasi/row->id/delete" id="lineitem">
-                        <button type="button" class="btn btn-danger">Hapus</button>
-                    </a>
-                    <button type="button" class="btn btn-light" data-dismiss="modal">Batal</button>
-                </div>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
     <script>
-        $(document).on("click", ".delete", function() {
-            var id = $(this).attr('data-item');
-            $("#lineitem").attr("href",
-                "/kelola/informasi/" + id + "/delete")
+        $(document).ready(function() {
+            $(document).on('change', '.btn-file :file', function() {
+                var input = $(this),
+                    label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+                input.trigger('fileselect', [label]);
+            });
+
+            $('.btn-file :file').on('fileselect', function(event, label) {
+
+                var input = $(this).parents('.input-group').find(':text'),
+                    log = label;
+
+                if (input.length) {
+                    input.val(log);
+                } else {
+                    if (log) alert(log);
+                }
+
+            });
+
+            function readURL(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function(e) {
+                        $('#img-upload').attr('src', e.target.result);
+                    }
+
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+
+            $("#imgInp").change(function() {
+                readURL(this);
+            });
         });
-    </script> --}}
+    </script>
+    </div>
 @endsection

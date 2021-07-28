@@ -85,7 +85,15 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin/statistik/survei/create', [PagesController::class, 'createsurvei'])->name('createsurvei');
     Route::get('/admin/statistik/survei/delete', [PagesController::class, 'deletesurvei'])->name('deletesurvei');
     Route::get('/admin/statistik/survei/edit', [PagesController::class, 'editsurvei'])->name('editsurvei');
-
+    
+    //database
+    Route::get('/admin/statistik/database', [PagesController::class, 'database'])->name('database');
+    
+    //buletin
+    Route::get('/admin/statistik/buletin', [PagesController::class, 'buletin'])->name('buletin');
+    Route::get('/admin/statistik/buletin/create', [PagesController::class, 'createbuletin'])->name('createbuletin');
+    Route::get('/admin/statistik/buletin/delete', [PagesController::class, 'deletebuletin'])->name('deletebuletin');
+    Route::get('/admin/statistik/buletin/edit', [PagesController::class, 'editbuletin'])->name('editbuletin');
     // Route::get('/admin/bem', [PagesController::class, 'admin'])->name('admin');
     // Route::get('/admin/statistik', [PagesController::class, 'admin'])->name('admin');
     // Route::get('/admin/profil', [PagesController::class, 'admin'])->name('admin');

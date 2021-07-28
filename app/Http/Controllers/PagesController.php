@@ -147,4 +147,26 @@ class PagesController extends Controller
     {
         return view('admin/statistik/survei/edit');
     }
+    //buletin
+    public function buletin()
+    {
+        return view('admin/statistik/buletin/index');
+    }
+    public function createbuletin()
+    {
+        return view('admin/statistik/buletin/create');
+    }
+    public function deletebuletin()
+    {
+    }
+    public function editbuletin()
+    {
+        return view('admin/statistik/buletin/edit');
+    }
+
+    //buletin
+    public function database()
+    {
+        return view('admin/statistik/database/index');
+    }
 }
