@@ -1,16 +1,15 @@
-@extends('layouts.main')
+@extends('layouts.stat')
 
 @section('content')
     <!-- HERO -->
-    <section class="hero d-flex flex-column justify-content-center align-items-center"
-        style="background-image: url('/uploads/tampilan/{{ $tampilan->background }}')" id="home">
+    <section class="hero4 d-flex flex-column justify-content-center align-items-center" id="home">
         <div class="bg-overlay"></div>
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-md-10 mx-auto col-12">
                     <div class="hero-text mt-5 text-center">
-                        <h1 data-aos="fade-up" data-aos-delay="500" style="color: #ffbc12">BEM SV UNDIP 2021</h1>
-                        <h6 data-aos="fade-up" data-aos-delay="300">Karya Nyata Ciptakan Jawara, untuk Vokasi Juara!
+                        <h1 data-aos="fade-up" data-aos-delay="500" style="color: #ffbc12">STATISTIC DIARY</h1>
+                        <h6 data-aos="fade-up" data-aos-delay="300">BEM SV UNDIP 2021
                         </h6>
                     </div>
                 </div>
@@ -66,27 +65,25 @@
             <div class="row">
 
                 <div class="mt-lg-5 mb-lg-0 mb-4 col-lg-5 col-md-10 mx-auto col-12">
-                    <h2 class="mb-4" data-aos="fade-up" data-aos-delay="300">{{ $tampilan->judul_sambutan }}
-                    </h2>
-
-                    <p data-aos="fade-up" data-aos-delay="400"><b>{{ $tampilan->hashtag }}</b> <br> <br>
-                        {{ $tampilan->kata_sambutan }}
+                    <h2 class="" data-aos="fade-up" data-aos-delay="300">Apa itu Statistic Diary?
+                    </h2> <br>
+                    <p data-aos="fade-up" data-aos-delay="400" style="text-align: justify">
+                        Statistic Diary merupakan sebuah wadah publikasi database milih BEM SV UNDIP yang dihimpun oleh Biro
+                        Statistik berdasarkan sumber resmi yang terpercaya maupun bidang-bidang dalam BEM SV UNDIP.
+                        Statistic Diary juga menampilkan publikasi hasil survei yang dilakukan dan diolah oleh Biro
+                        Statistik dalam bentuk laporan, serta hasil infografis menarik berbasis data mengenai suatu hal
+                        tertentu yang disajikan dalam rubrik Bicara Data.
                     </p>
-
-                    <p data-aos="fade-up" data-aos-delay="500">Mau tau lebih tentang kami? <a rel="nofollow" href="/profil"
-                            target="_parent">Klik disini</a></p>
-
                 </div>
 
                 <div class="ml-lg-auto col-lg-3 col-md-6 col-12" data-aos="fade-up" data-aos-delay="700">
                     <div class="team-thumb">
-                        <img src="/uploads/tampilan/{{ $tampilan->gambar_ketua }}" class="img-fluid"
-                            alt="{{ $tampilan->nama_ketua }}">
+                        <img src="/uploads/statisticdiary/ketua.png" class="img-fluid">
 
                         <div class="team-info d-flex flex-column">
 
-                            <h3>{{ $tampilan->nama_ketua }}</h3>
-                            <span>{{ $tampilan->keterangan_ketua }}</span>
+                            <h3>Alfath Hidayatullah</h3>
+                            <span>Kepala Biro Statistik</span>
 
                             <ul class="social-icon mt-3">
                                 <li><a href="#" class="fa fa-instagram"></a></li>
@@ -98,13 +95,12 @@
                 <div class="mr-lg-auto mt-5 mt-lg-0 mt-md-0 col-lg-3 col-md-6 col-12" data-aos="fade-up"
                     data-aos-delay="800">
                     <div class="team-thumb">
-                        <img src="/uploads/tampilan/{{ $tampilan->gambar_wakil }}" class="img-fluid"
-                            alt="{{ $tampilan->nama_wakil }}">
+                        <img src="/uploads/statisticdiary/wakil.png" class="img-fluid">
 
                         <div class="team-info d-flex flex-column">
                             <br>
-                            <h3>{{ $tampilan->nama_wakil }}</h3>
-                            <span>{{ $tampilan->keterangan_wakil }}</span>
+                            <h3>Taqi Zaim Aufa</h3>
+                            <span>Wakil Kepala Biro Statistik</span>
                             <br>
 
                             <ul class="social-icon mt-3">
@@ -119,22 +115,51 @@
         <br><br>
     </div>
 
-    <section class="schedule section" id="schedule" style="background-color: #14192f">
+    <section class="schedule section" id="schedule" style="background-color: rgb(241, 241, 241)">
         <div class="container">
             <div class="row">
-                <div class="col-lg-4 col-4 text-center">
-                    <h6 data-aos="fade-up">Biro</h6>
-                    <h2 class="text-white count" data-aos="fade-up" data-aos-delay="200"> 11</h2>
+                <div class="col-lg-12 col-12 text-center">
+                    <h2 data-aos="fade-up" data-aos-delay="200">Struktur Biro Statistik BEM SV UNDIP
+                        2021</h2>
                 </div>
-                <div class="col-lg-4 col-4 text-center">
-                    <h6 data-aos="fade-up">Program Kerja</h6>
-                    <h2 class="text-white count" data-aos="fade-up" data-aos-delay="200"> 45</h2>
+                <div class="col-lg-4 col-md-6 col-12" data-aos="fade-up" data-aos-delay="400">
+                    <div class="class-thumb">
+                        <img src="/uploads/statisticdiary/ketua.png" class="img-fluid" alt="Class"
+                            style="width:400px;height:300px;object-fit: cover">
+                        <div class="class-info" style="height: auto">
+                            <h3 class="mb-1" data-aos="fade-up" data-aos-delay="400">Alfath Hidayatullah</h3>
+                            <p data-aos="fade-up" data-aos-delay="150">
+                                Kepala Biro Statistik
+                            </p>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-lg-4 col-4 text-center">
-                    <h6 data-aos="fade-up">Pengurus</h6>
-                    <h2 class="text-white count" data-aos="fade-up" data-aos-delay="200"> 100</h2>
+                <div class="col-lg-4 col-md-6 col-12" data-aos="fade-up" data-aos-delay="400">
+                    <div class="class-thumb">
+                        <img src="/uploads/statisticdiary/wakil.png" class="img-fluid" alt="Class"
+                            style="width:400px;height:300px;object-fit: cover">
+                        <div class="class-info" style="height: auto">
+                            <h3 class="mb-1" data-aos="fade-up" data-aos-delay="400">Taqi Zaim Aufa</h3>
+                            <p data-aos="fade-up" data-aos-delay="150">
+                                Wakil Kepala Biro Statistik
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12" data-aos="fade-up" data-aos-delay="400">
+                    <div class="class-thumb">
+                        <img src="/uploads/statisticdiary/sekben.png" class="img-fluid" alt="Class"
+                            style="width:400px;height:300px;object-fit: cover">
+                        <div class="class-info" style="height: auto">
+                            <h3 class="mb-1" data-aos="fade-up" data-aos-delay="400">Taqi Zaim Aufa</h3>
+                            <p data-aos="fade-up" data-aos-delay="150">
+                                Wakil Kepala Biro Statistik
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
+
         </div>
     </section>
 

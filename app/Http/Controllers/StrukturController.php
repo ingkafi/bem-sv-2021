@@ -79,7 +79,7 @@ class StrukturController extends Controller
         // ]);
         $strukturs->save(); // Finally, save the record.W
         // return $request;
-        Alert::success('Berhasil', 'Program Kerja Berhasil Ditambahkan');
+        Alert::success('Berhasil', 'Struktur Berhasil Ditambahkan');
         return redirect()->action([StrukturController::class, 'index']);
     }
 
@@ -139,7 +139,7 @@ class StrukturController extends Controller
                 ]);
         }
         // $strukturs->save(); // Finally, save the record.
-        Alert::success('Berhasil', 'Program Kerja Berhasil Diedit');
+        Alert::success('Berhasil', 'Struktur Berhasil Diedit');
         return redirect()->action([StrukturController::class, 'index']);
     }
 
@@ -153,7 +153,7 @@ class StrukturController extends Controller
     {
         $strukturs = Struktur::where('id',  $request->route('struktur'));
         $strukturs->delete();
-        Alert::success('Berhasil', 'Program Kerja Telah Dihapus');
+        Alert::success('Berhasil', 'Struktur Telah Dihapus');
         return redirect()->action([StrukturController::class, 'index']);
     }
 }

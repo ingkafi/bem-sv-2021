@@ -6,11 +6,12 @@
         <div class="page-breadcrumb">
             <div class="row">
                 <div class="col-7 align-self-center">
-                    <h2 class="page-title text-truncate text-dark font-weight-medium mb-1">Biro Statistik</h2>
+                    <h2 class="page-title text-truncate text-dark font-weight-medium mb-1">Statistik</h2>
                     <div class="d-flex align-items-center">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb m-0 p-0">
-                                <li class="breadcrumb-item"><a href="/kelola/informasi" class="text-muted">Survei</a>
+                                <li class="breadcrumb-item"><a href="/kelola/informasi" class="text-muted">Struktur
+                                        Biro Statistik</a>
                                 </li>
                                 <li class="breadcrumb-item text-muted active" aria-current="page">Tambah</li>
                             </ol>
@@ -22,39 +23,37 @@
         <br>
         <hr>
         <div class="container-fluid">
-            <form action="/admin/statistik/survei/store" method="post" enctype="multipart/form-data">
+            <form action="/admin/statistik/struktur/store" method="post" enctype="multipart/form-data">
                 @method('patch')
                 @csrf
-                <input type="hidden" name="status" id="status" value="Belum Dipublish" class="form-control">
                 <div class="row">
                     <div class="card" style="width: 100%">
                         <div class="card-body">
-                            <h4 class="card-title">Judul</h4>
+                            <h4 class="card-title">Nama</h4>
                             <div class="form-group">
-                                <input type="text" name="judul" id="judul" class="form-control">
-                                @error('judul')
+                                <input type="text" name="nama" id="nama" class="form-control">
+                                @error('nama')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
-                            <h4 class="card-title">Isi</h4>
+                            <h4 class="card-title">Jabatan</h4>
                             <div class="form-group">
-                                <textarea class="form-control" rows="3" name="isi" id="isi"></textarea>
-                                @error('isi')
+                                <select class="form-control" id="kode_jabatan" name="kode_jabatan">
+                                    <option selected disabled>Pilih Bidang</option>
+                                    <option value="1">Kepala Biro Statistik</option>
+                                    <option value="2">Wakil Kepala Biro Statistik</option>
+                                    <option value="3">Sekben Biro Statistik</option>
+                                    <option value="4">Divisi Survei dan Penelitian</option>
+                                    <option value="5">Divisi Analisis Data dan Database </option>
+                                </select>
+                                @error('kode_jabatan')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
-                            <h4 class="card-title">Link PDF</h4>
-                            <div class="form-group">
-                                <input class="form-control" type="text" name="link" id="link">
-                                @error('link')
-                                    <div class=" alert alert-danger">{{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-                            <h4 class="card-title">Upload Thumbnail</h4>
+                            <h4 class="card-title">Upload foto</h4>
                             <fieldset class="form-group">
-                                <input type="file" class="form-control-file" id="imgInp" name="gambar" required autofocus>
-                                @error('gambar')
+                                <input type="file" class="form-control-file" id="imgInp" name="file" required autofocus>
+                                @error('file')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </fieldset>
@@ -62,7 +61,7 @@
                             <div style="float: right">
                                 <button type="submit" id="submit"
                                     class="btn waves-effect waves-light btn-rounded btn-success">Submit</button>
-                                <a href="/admin/statistik/survei"
+                                <a href="/admin/statistik/struktur"
                                     class="btn waves-effect waves-light btn-rounded btn-danger">Batal</a>
                             </div>
                         </div>

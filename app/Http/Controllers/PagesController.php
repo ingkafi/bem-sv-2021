@@ -17,6 +17,15 @@ class PagesController extends Controller
         $infos = DB::table('infos')->get()->sortBy('created_at');
         return view('/main/index', compact('tampilan', 'infos'));
     }
+    public function homestat()
+    {
+        $struktur1 = DB::table('struktur_stats')->where('kode_jabatan', '1')->get();
+        $struktur2 = DB::table('struktur_stats')->where('kode_jabatan', '2')->get();
+        $struktur3 = DB::table('struktur_stats')->where('kode_jabatan', '3')->get();
+        $tampilan = Tampilan::first();
+        $infos = DB::table('infos')->get()->sortBy('created_at');
+        return view('/statdiary/index', compact('tampilan', 'infos','struktur1','struktur2','struktur3'));
+    }
     public function proker()
     {
         $prokers =  Proker::get();

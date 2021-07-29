@@ -45,7 +45,6 @@ class SurveiController extends Controller
             'judul' => 'required',
             'isi' => 'required',
             'link' => 'required',
-            'gambar' => 'required',
         ]);
 
         // ensure the request has a file before we attempt anything else.
@@ -58,26 +57,25 @@ class SurveiController extends Controller
             // Save the file locally in the storage/public/ folder under a new folder named /product
             $name = $request->file('gambar')->getClientOriginalName();
             $request->file('gambar')->move(public_path() . '/uploads/survei/', $name);
-
+            
             // Store the record, using the new file hashname which will be it's new filename identity.
             // $form_data = array(
-            //     'proker' =>  $request->proker,
-            //     'keterangan' =>  $request->keterangan,
-            //     'bidang' =>  $request->bidang,
-            //     'gambar' =>  $name,
-            // );
-            // Proker::create($form_data);
-
+                //     'proker' =>  $request->proker,
+                //     'keterangan' =>  $request->keterangan,
+                //     'bidang' =>  $request->bidang,
+                //     'gambar' =>  $name,
+                // );
+                // Proker::create($form_data);
+                
         }
-        $survei = new Survei;
-        $survei->judul =  $request->input('judul');
-        $survei->isi =  $request->input('isi');
-        $survei->link =  $request->input('link');
-        $survei->status =  $request->input('status');
-        $survei->gambar =  $name;
-
-        $survei->save(); // Finally, save the record.W
-        // return $request;
+        $form_data = array(
+            'judul'       =>   $request->judul,
+            'isi'        =>   $request->isi,
+            'link'        =>   $request->link,
+            'status'        =>   '0',
+            'gambar'        =>   $request->file('gambar')->getClientOriginalName(),
+        );
+        Survei::create($form_data); 
         Alert::success('Berhasil', 'Survei Berhasil Ditambahkan');
         return redirect()->action([SurveiController::class, 'index']);
     }
@@ -169,26 +167,26 @@ class SurveiController extends Controller
      * @param  \App\Models\Survei  $info
      * @return \Illuminate\Http\Response
      */
-    public function publish(Survei $survei)
+    public function show(Request $request)
     {
-        if ('staus' == 'Belum Dipublish') {
-            Survei::where('id',  $survei->id)
-                ->update([
-                    'status' =>  'Sudah Dipublish',
-                ]);
-        }
-        if ('staus' == 'Sudah Dipublish') {
-            Survei::where('id',  $survei->id)
-                ->update([
-                    'status' =>  'Belum Dipublish',
-                ]);
-        }
+        $survei = Survei::where('id',  $request->route('survei'))->first();
 
+        $survei->status = '1';
 
-
-        $buletin->save(); // Finally, save the record.
-        Alert::success('Berhasil', 'Buletin Berhasil Dipublish');
+        $survei->save();
+        Alert::success('Berhasil', 'Survei Berhasil Ditampilkan');
         // dd($request);
-        return redirect()->action([BuletinController::class, 'index']);
+        return redirect()->action([SurveiController::class, 'index']);
+    }
+    public function hide(Request $request)
+    {
+        $survei = Survei::where('id',  $request->route('survei'))->first();
+
+        $survei->status = '0';
+
+        $survei->save();
+        Alert::success('Berhasil', 'Survei Berhasil Diarsip');
+        // dd($request);
+        return redirect()->action([SurveiController::class, 'index']);
     }
 }

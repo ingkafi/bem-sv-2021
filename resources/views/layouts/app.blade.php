@@ -179,6 +179,11 @@
                         <li class="list-divider"></li>
 
                         <li class="nav-small-cap"><span class="hide-menu">Biro Statistik</span></li>
+                        <li class="sidebar-item"> <a class="sidebar-link" href="/admin/statistik/struktur"
+                                aria-expanded="false"><i data-feather="users" class="feather-icon"></i><span
+                                    class="hide-menu">Struktur
+                                </span></a>
+                        </li>
                         <li class="sidebar-item"> <a class="sidebar-link" href="/admin/statistik/buletin"
                                 aria-expanded="false"><i data-feather="book-open" class="feather-icon"></i><span
                                     class="hide-menu">Buletin

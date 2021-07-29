@@ -69,12 +69,12 @@ class BuletinController extends Controller
             // Proker::create($form_data);
 
         }
-        $proker = new Buletin;
-        $proker->judul =  $request->input('judul');
-        $proker->isi =  $request->input('isi');
-        $proker->link =  $request->input('link');
-        $proker->status =  $request->input('status');
-        $proker->gambar =  $name;
+        $buletin = new Buletin;
+        $buletin->judul =  $request->input('judul');
+        $buletin->isi =  $request->input('isi');
+        $buletin->link =  $request->input('link');
+        $buletin->status =  '0';
+        $buletin->gambar =  $name;
 
         // $proker = new Proker([
         //     'proker' =>  $request->proker,
@@ -82,7 +82,7 @@ class BuletinController extends Controller
         //     'bidang' =>  $request->bidang,
         //     'gambar' =>  $name,
         // ]);
-        $proker->save(); // Finally, save the record.W
+        $buletin->save(); // Finally, save the record.W
         // return $request;
         Alert::success('Berhasil', 'Buletin Berhasil Ditambahkan');
         return redirect()->action([BuletinController::class, 'index']);
@@ -175,25 +175,25 @@ class BuletinController extends Controller
      * @param  \App\Models\Buletin  $info
      * @return \Illuminate\Http\Response
      */
-    public function publish(Buletin $buletin)
+    public function show(Request $request)
     {
-        if ('staus' == 'Belum Dipublish') {
-            Buletin::where('id',  $buletin->id)
-                ->update([
-                    'status' =>  'Sudah Dipublish',
-                ]);
-        }
-        if ('staus' == 'Sudah Dipublish') {
-            Buletin::where('id',  $buletin->id)
-                ->update([
-                    'status' =>  'Belum Dipublish',
-                ]);
-        }
+        $Buletin = Buletin::where('id',  $request->route('buletin'))->first();
 
+        $Buletin->status = '1';
 
+        $Buletin->save();
+        Alert::success('Berhasil', 'Buletin Berhasil Ditampilkan');
+        // dd($request);
+        return redirect()->action([BuletinController::class, 'index']);
+    }
+    public function hide(Request $request)
+    {
+        $Buletin = Buletin::where('id',  $request->route('buletin'))->first();
 
-        $buletin->save(); // Finally, save the record.
-        Alert::success('Berhasil', 'Buletin Berhasil Dipublish');
+        $Buletin->status = '0';
+
+        $Buletin->save();
+        Alert::success('Berhasil', 'Buletin Berhasil Diarsip');
         // dd($request);
         return redirect()->action([BuletinController::class, 'index']);
     }

@@ -9,6 +9,7 @@ use App\Http\Controllers\TampilanController;
 use App\Http\Controllers\ProkerController;
 use App\Http\Controllers\StrukturController;
 use App\Http\Controllers\BuletinController;
+use App\Http\Controllers\StrukturStatController;
 use App\Http\Controllers\SurveiController;
 
 /*
@@ -22,6 +23,7 @@ use App\Http\Controllers\SurveiController;
 |
 */
 
+Route::get('/statdiary', [PagesController::class, 'homestat']);
 Route::get('/', [PagesController::class, 'home']);
 Route::get('/info', [PagesController::class, 'informasi']);
 Route::get('/info/{info}/show', [PagesController::class, 'showinformasi']);
@@ -81,6 +83,14 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin/bem/struktur/{struktur}/delete', [StrukturController::class, 'delete'])->name('delete');
     Route::get('/admin/bem/struktur/{struktur}/edit', [StrukturController::class, 'edit'])->name('edit');
     Route::patch('/admin/bem/struktur/{struktur}/update', [StrukturController::class, 'update'])->name('update');
+    
+    //struktur
+    Route::get('/admin/statistik/struktur', [StrukturStatController::class, 'index'])->name('index');
+    Route::get('/admin/statistik/struktur/create', [StrukturStatController::class, 'create'])->name('create');
+    Route::patch('/admin/statistik/struktur/store', [StrukturStatController::class, 'store'])->name('store');
+    Route::get('/admin/statistik/struktur/{struktur}/delete', [StrukturStatController::class, 'delete'])->name('delete');
+    Route::get('/admin/statistik/struktur/{struktur}/edit', [StrukturStatController::class, 'edit'])->name('edit');
+    Route::patch('/admin/statistik/struktur/{struktur}/update', [StrukturStatController::class, 'update'])->name('update');
 
     //survei
     Route::get('/admin/statistik/survei', [SurveiController::class, 'index'])->name('index');
@@ -89,13 +99,15 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin/statistik/survei/{survei}/delete', [SurveiController::class, 'delete'])->name('delete');
     Route::get('/admin/statistik/survei/{survei}/edit', [SurveiController::class, 'edit'])->name('edit');
     Route::patch('/admin/statistik/survei/{survei}/update', [SurveiController::class, 'update'])->name('update');
-
+    Route::get('/admin/statistik/survei/{survei}/show', [SurveiController::class, 'show'])->name('show');
+    Route::get('/admin/statistik/survei/{survei}/hide', [SurveiController::class, 'hide'])->name('hide');
+    
     //database
     Route::get('/admin/statistik/database', [PagesController::class, 'database'])->name('database');
     Route::get('/admin/statistik/database/create', [PagesController::class, 'createdatabase'])->name('createdatabase');
     Route::get('/admin/statistik/database/delete', [PagesController::class, 'deletedatabase'])->name('deletedatabase');
     Route::get('/admin/statistik/database/edit', [PagesController::class, 'editdatabase'])->name('editdatabase');
-
+    
     //buletin
     Route::get('/admin/statistik/buletin', [BuletinController::class, 'index'])->name('index');
     Route::get('/admin/statistik/buletin/create', [BuletinController::class, 'create'])->name('create');
@@ -104,6 +116,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin/statistik/buletin/{buletin}/delete', [BuletinController::class, 'delete'])->name('delete');
     Route::get('/admin/statistik/buletin/{buletin}/edit', [BuletinController::class, 'edit'])->name('edit');
     Route::patch('/admin/statistik/buletin/{buletin}/update', [BuletinController::class, 'update'])->name('update');
+    Route::get('/admin/statistik/buletin/{buletin}/show', [BuletinController::class, 'show'])->name('show');
+    Route::get('/admin/statistik/buletin/{buletin}/hide', [BuletinController::class, 'hide'])->name('hide');
     // Route::get('/admin/bem', [PagesController::class, 'admin'])->name('admin');
     // Route::get('/admin/statistik', [PagesController::class, 'admin'])->name('admin');
     // Route::get('/admin/profil', [PagesController::class, 'admin'])->name('admin');
