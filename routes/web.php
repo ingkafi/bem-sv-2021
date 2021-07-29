@@ -88,6 +88,9 @@ Route::group(['middleware' => 'auth'], function () {
     
     //database
     Route::get('/admin/statistik/database', [PagesController::class, 'database'])->name('database');
+    Route::get('/admin/statistik/database/create', [PagesController::class, 'createdatabase'])->name('createdatabase');
+    Route::get('/admin/statistik/database/delete', [PagesController::class, 'deletedatabase'])->name('deletedatabase');
+    Route::get('/admin/statistik/database/edit', [PagesController::class, 'editdatabase'])->name('editdatabase');
     
     //buletin
     Route::get('/admin/statistik/buletin', [PagesController::class, 'buletin'])->name('buletin');

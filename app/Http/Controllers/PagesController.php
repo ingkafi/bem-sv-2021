@@ -169,4 +169,17 @@ class PagesController extends Controller
     {
         return view('admin/statistik/database/index');
     }
+
+    //database
+    public function createdatabase()
+    {
+        return view('admin/statistik/database/create');
+    }
+    public function deletedatabase()
+    {
+    }
+    public function editdatabase()
+    {
+        return view('admin/statistik/database/edit');
+    }
 }
