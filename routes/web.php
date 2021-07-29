@@ -8,6 +8,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\TampilanController;
 use App\Http\Controllers\ProkerController;
 use App\Http\Controllers\StrukturController;
+use App\Http\Controllers\BuletinController;
+use App\Http\Controllers\SurveiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -81,22 +83,27 @@ Route::group(['middleware' => 'auth'], function () {
     Route::patch('/admin/bem/struktur/{struktur}/update', [StrukturController::class, 'update'])->name('update');
 
     //survei
-    Route::get('/admin/statistik/survei', [PagesController::class, 'survei'])->name('survei');
-    Route::get('/admin/statistik/survei/create', [PagesController::class, 'createsurvei'])->name('createsurvei');
-    Route::get('/admin/statistik/survei/delete', [PagesController::class, 'deletesurvei'])->name('deletesurvei');
-    Route::get('/admin/statistik/survei/edit', [PagesController::class, 'editsurvei'])->name('editsurvei');
-    
+    Route::get('/admin/statistik/survei', [SurveiController::class, 'index'])->name('index');
+    Route::get('/admin/statistik/survei/create', [SurveiController::class, 'create'])->name('create');
+    Route::patch('/admin/statistik/survei/store', [SurveiController::class, 'store'])->name('store');
+    Route::get('/admin/statistik/survei/{survei}/delete', [SurveiController::class, 'delete'])->name('delete');
+    Route::get('/admin/statistik/survei/{survei}/edit', [SurveiController::class, 'edit'])->name('edit');
+    Route::patch('/admin/statistik/survei/{survei}/update', [SurveiController::class, 'update'])->name('update');
+
     //database
     Route::get('/admin/statistik/database', [PagesController::class, 'database'])->name('database');
     Route::get('/admin/statistik/database/create', [PagesController::class, 'createdatabase'])->name('createdatabase');
     Route::get('/admin/statistik/database/delete', [PagesController::class, 'deletedatabase'])->name('deletedatabase');
     Route::get('/admin/statistik/database/edit', [PagesController::class, 'editdatabase'])->name('editdatabase');
-    
+
     //buletin
-    Route::get('/admin/statistik/buletin', [PagesController::class, 'buletin'])->name('buletin');
-    Route::get('/admin/statistik/buletin/create', [PagesController::class, 'createbuletin'])->name('createbuletin');
-    Route::get('/admin/statistik/buletin/delete', [PagesController::class, 'deletebuletin'])->name('deletebuletin');
-    Route::get('/admin/statistik/buletin/edit', [PagesController::class, 'editbuletin'])->name('editbuletin');
+    Route::get('/admin/statistik/buletin', [BuletinController::class, 'index'])->name('index');
+    Route::get('/admin/statistik/buletin/create', [BuletinController::class, 'create'])->name('create');
+    Route::patch('/admin/statistik/buletin/store', [BuletinController::class, 'store'])->name('store');
+    Route::patch('/admin/statistik/buletin/{buletin}/publish', [BuletinController::class, 'publish'])->name('publish');
+    Route::get('/admin/statistik/buletin/{buletin}/delete', [BuletinController::class, 'delete'])->name('delete');
+    Route::get('/admin/statistik/buletin/{buletin}/edit', [BuletinController::class, 'edit'])->name('edit');
+    Route::patch('/admin/statistik/buletin/{buletin}/update', [BuletinController::class, 'update'])->name('update');
     // Route::get('/admin/bem', [PagesController::class, 'admin'])->name('admin');
     // Route::get('/admin/statistik', [PagesController::class, 'admin'])->name('admin');
     // Route::get('/admin/profil', [PagesController::class, 'admin'])->name('admin');
