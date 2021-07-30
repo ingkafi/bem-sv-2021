@@ -30,6 +30,8 @@
                                 <h3 class="card-title">Tabel Informasi <a href="/admin/kelola/info/create"> <button
                                             type="button"
                                             class="btn waves-effect btn-sm waves-light btn-rounded btn-success">Tambah
+                                            Informasi</button> </a><a href="/info"> <button type="button"
+                                            class="btn waves-effect btn-sm waves-light btn-rounded btn-info">Halaman
                                             Informasi</button> </a></h3>
                             </div>
                             <div class="table-responsive">

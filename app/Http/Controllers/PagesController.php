@@ -19,12 +19,14 @@ class PagesController extends Controller
     }
     public function homestat()
     {
-        $struktur1 = DB::table('struktur_stats')->where('kode_jabatan', '1')->get();
-        $struktur2 = DB::table('struktur_stats')->where('kode_jabatan', '2')->get();
-        $struktur3 = DB::table('struktur_stats')->where('kode_jabatan', '3')->get();
+        $struktur1 = DB::table('struktur_stats')->where('kode_jabatan', '1')->get()->first();
+        $struktur2 = DB::table('struktur_stats')->where('kode_jabatan', '2')->get()->first();
+        $struktur3 = DB::table('struktur_stats')->where('kode_jabatan', '3')->get()->first();
+        $struktur4 = DB::table('struktur_stats')->where('kode_jabatan', '4')->get()->sortBy('created_at');
+        $struktur5 = DB::table('struktur_stats')->where('kode_jabatan', '5')->get()->sortBy('created_at');
         $tampilan = Tampilan::first();
         $infos = DB::table('infos')->get()->sortBy('created_at');
-        return view('/statdiary/index', compact('tampilan', 'infos','struktur1','struktur2','struktur3'));
+        return view('/statdiary/index', compact('tampilan', 'infos','struktur1','struktur2','struktur3','struktur4','struktur5'));
     }
     public function proker()
     {
@@ -55,11 +57,14 @@ class PagesController extends Controller
     //ADMIN-------------------------------------------------------------------------- 
     public function admin()
     {
+        $survei = DB::table('surveis')->get()->count();
+        $buletin = DB::table('buletins')->get()->count();
+        $strukturstat = DB::table('struktur_stats')->get()->count();
         $info = DB::table('infos')->get()->count();
         $aspirasi = DB::table('aspirasis')->get()->count();
         $user = DB::table('users')->get()->count();
         $proker = DB::table('prokers')->get()->count();
-        return view('admin/dashboard', compact('info', 'aspirasi', 'user', 'proker'));
+        return view('admin/dashboard', compact('info', 'aspirasi', 'user', 'proker','survei','buletin','strukturstat'));
     }
     public function tampilan()
     {

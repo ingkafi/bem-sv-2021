@@ -31,7 +31,9 @@
                                 <h3 class="card-title">Tabel Struktur Organisasi <a href="/admin/bem/struktur/create">
                                         <button type="button"
                                             class="btn waves-effect btn-sm waves-light btn-rounded btn-success">Tambah
-                                            Struktur</button> </a></h3>
+                                            Struktur</button> </a><a href="/profil"> <button type="button"
+                                            class="btn waves-effect btn-sm waves-light btn-rounded btn-info">Halaman
+                                            Profil</button> </a></h3>
                             </div>
                             <div class="table-responsive">
                                 <table class="table no-wrap v-middle mb-0" id="myTable">

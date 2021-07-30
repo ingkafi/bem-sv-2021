@@ -31,7 +31,9 @@
                                         href="/admin/statistik/struktur/create">
                                         <button type="button"
                                             class="btn waves-effect btn-sm waves-light btn-rounded btn-success">Tambah
-                                            Struktur</button> </a></h3>
+                                            Struktur</button> </a><a href="/statdiary"> <button type="button"
+                                            class="btn waves-effect btn-sm waves-light btn-rounded btn-info">Halaman
+                                            Profil</button> </a></h3>
                             </div>
                             <div class="table-responsive">
                                 <table class="table no-wrap v-middle mb-0" id="myTable">

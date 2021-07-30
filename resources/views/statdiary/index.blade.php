@@ -74,16 +74,18 @@
                         Statistik dalam bentuk laporan, serta hasil infografis menarik berbasis data mengenai suatu hal
                         tertentu yang disajikan dalam rubrik Bicara Data.
                     </p>
+                    <p data-aos="fade-up" data-aos-delay="500">Mau tau lebih tentang kami? <a rel="nofollow"
+                            href="https://instagram.com/bemsv.birostat" target="_parent">Klik disini</a></p>
                 </div>
 
                 <div class="ml-lg-auto col-lg-3 col-md-6 col-12" data-aos="fade-up" data-aos-delay="700">
                     <div class="team-thumb">
-                        <img src="/uploads/statisticdiary/ketua.png" class="img-fluid">
+                        <img src="/uploads/statisticdiary/{{ $struktur1->foto }}" class="img-fluid">
 
                         <div class="team-info d-flex flex-column">
 
-                            <h3>Alfath Hidayatullah</h3>
-                            <span>Kepala Biro Statistik</span>
+                            <h3>{{ $struktur1->nama }}</h3>
+                            <span>{{ $struktur1->jabatan }}</span>
 
                             <ul class="social-icon mt-3">
                                 <li><a href="#" class="fa fa-instagram"></a></li>
@@ -95,12 +97,12 @@
                 <div class="mr-lg-auto mt-5 mt-lg-0 mt-md-0 col-lg-3 col-md-6 col-12" data-aos="fade-up"
                     data-aos-delay="800">
                     <div class="team-thumb">
-                        <img src="/uploads/statisticdiary/wakil.png" class="img-fluid">
+                        <img src="/uploads/statisticdiary/{{ $struktur2->foto }}" class="img-fluid">
 
                         <div class="team-info d-flex flex-column">
                             <br>
-                            <h3>Taqi Zaim Aufa</h3>
-                            <span>Wakil Kepala Biro Statistik</span>
+                            <h3>{{ $struktur2->nama }}</h3>
+                            <span>{{ $struktur2->jabatan }}</span>
                             <br>
 
                             <ul class="social-icon mt-3">
@@ -121,104 +123,83 @@
                 <div class="col-lg-12 col-12 text-center">
                     <h2 data-aos="fade-up" data-aos-delay="200">Struktur Biro Statistik BEM SV UNDIP
                         2021</h2>
+                    <br>
                 </div>
                 <div class="col-lg-4 col-md-6 col-12" data-aos="fade-up" data-aos-delay="400">
                     <div class="class-thumb">
-                        <img src="/uploads/statisticdiary/ketua.png" class="img-fluid" alt="Class"
-                            style="width:400px;height:300px;object-fit: cover">
+                        <img src="/uploads/statisticdiary/{{ $struktur1->foto }}" class="img-fluid" alt="Class"
+                            style="width:d;height:500px;object-fit: cover">
                         <div class="class-info" style="height: auto">
-                            <h3 class="mb-1" data-aos="fade-up" data-aos-delay="400">Alfath Hidayatullah</h3>
+                            <h3 class="mb-1" data-aos="fade-up" data-aos-delay="400">{{ $struktur1->nama }}</h3>
                             <p data-aos="fade-up" data-aos-delay="150">
-                                Kepala Biro Statistik
+                                {{ $struktur1->jabatan }}
                             </p>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 col-12" data-aos="fade-up" data-aos-delay="400">
                     <div class="class-thumb">
-                        <img src="/uploads/statisticdiary/wakil.png" class="img-fluid" alt="Class"
-                            style="width:400px;height:300px;object-fit: cover">
+                        <img src="/uploads/statisticdiary/{{ $struktur2->foto }}" class="img-fluid" alt="Class"
+                            style="width:d;height:500px;object-fit: cover">
                         <div class="class-info" style="height: auto">
-                            <h3 class="mb-1" data-aos="fade-up" data-aos-delay="400">Taqi Zaim Aufa</h3>
+                            <h3 class="mb-1" data-aos="fade-up" data-aos-delay="400">{{ $struktur2->nama }}</h3>
                             <p data-aos="fade-up" data-aos-delay="150">
-                                Wakil Kepala Biro Statistik
+                                {{ $struktur2->jabatan }}
                             </p>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 col-12" data-aos="fade-up" data-aos-delay="400">
                     <div class="class-thumb">
-                        <img src="/uploads/statisticdiary/sekben.png" class="img-fluid" alt="Class"
-                            style="width:400px;height:300px;object-fit: cover">
+                        <img src="/uploads/statisticdiary/{{ $struktur3->foto }}" class="img-fluid" alt="Class"
+                            style="width:d;height:500px;object-fit: cover">
                         <div class="class-info" style="height: auto">
-                            <h3 class="mb-1" data-aos="fade-up" data-aos-delay="400">Taqi Zaim Aufa</h3>
+                            <h3 class="mb-1" data-aos="fade-up" data-aos-delay="400">{{ $struktur3->nama }}</h3>
                             <p data-aos="fade-up" data-aos-delay="150">
-                                Wakil Kepala Biro Statistik
+                                {{ $struktur3->jabatan }}
                             </p>
                         </div>
                     </div>
                 </div>
-            </div>
 
-        </div>
-    </section>
-
-    <!-- CLASS -->
-    <section class="class section" id="class">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-12 text-center mb-5">
-                    <h2 data-aos="fade-up" data-aos-delay="200">Informasi Terkini</h2>
+                <div class="col-lg-12 col-12 text-center"><br>
+                    <br><br><br>
+                    <h3 data-aos="fade-up" data-aos-delay="200">{{ $struktur5[1]->jabatan }}</h3>
                 </div>
-                @foreach ($infos as $row)
-                    <?php
-                    $monthNum = date('m', strtotime($row->created_at));
-                    $dateObj = DateTime::createFromFormat('!m', $monthNum);
-                    $monthName = $dateObj->format('F');
-                    ?>
+                @foreach ($struktur5 as $row)
                     <div class="col-lg-4 col-md-6 col-12" data-aos="fade-up" data-aos-delay="400">
                         <div class="class-thumb">
-                            <img src="{{ asset('uploads/informasi/' . $row->file_path) }}" class="img-fluid" alt="Class"
-                                style="width:400px;height:300px;object-fit: cover">
+                            <img src="/uploads/statisticdiary/{{ $row->foto }}" class="img-fluid" alt="Class"
+                                style="width:d;height:500px;object-fit: cover">
                             <div class="class-info" style="height: auto">
-                                <h3 class="mb-1">{{ $row->judul }}</h3>
-                                <span><strong>{{ date('j', strtotime($row->created_at)) }} {{ $monthName }}
-                                        {{ date('Y', strtotime($row->created_at)) }}</strong></span><br> <br>
-                                <p data-aos="fade-up" data-aos-delay="50">{{ substr($row->isi, 0, 50) }}....
-                                </p>
+                                <h3 class="mb-1" data-aos="fade-up" data-aos-delay="400">{{ $row->nama }}</h3>
                                 <p data-aos="fade-up" data-aos-delay="150">
-                                    <a rel="nofollow" href="/info/{{ $row->id }}/show">Baca
-                                        selengkapnya</a>
+                                    {{ $row->jabatan }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+                <div class="col-lg-12 col-12 text-center"><br>
+                    <br><br><br>
+                    <h3 data-aos="fade-up" data-aos-delay="200">{{ $struktur4[1]->jabatan }}</h3>
+                </div>
+                @foreach ($struktur4 as $row)
+                    <div class="col-lg-4 col-md-6 col-12" data-aos="fade-up" data-aos-delay="400">
+                        <div class="class-thumb">
+                            <img src="/uploads/statisticdiary/{{ $row->foto }}" class="img-fluid" alt="Class"
+                                style="width:d;height:500px;object-fit: cover">
+                            <div class="class-info" style="height: auto">
+                                <h3 class="mb-1" data-aos="fade-up" data-aos-delay="400">{{ $row->nama }}</h3>
+                                <p data-aos="fade-up" data-aos-delay="150">
+                                    {{ $row->jabatan }}
                                 </p>
                             </div>
                         </div>
                     </div>
                 @endforeach
             </div>
-            <div>
-                <br><br>
-                <p data-aos="fade-up" data-aos-delay="500" style="text-align: center">Baca informasi lainnya <a
-                        rel="nofollow" href="/info" target="_parent">disini</a>
-                </p>
-            </div>
-    </section>
 
-
-    <!-- SCHEDULE -->
-    <section class="schedule section" id="schedule" style="background-color: #14192f">
-        <div class="container">
-            <div class="row">
-
-                <div class="col-lg-12 col-4 text-center">
-                    <h6 data-aos="fade-up">{{ $tampilan->judul_video }}</h6>
-
-                    <h2 class="text-white" data-aos="fade-up" data-aos-delay="200">{{ $tampilan->judul2_video }}</h2>
-                    <br><br>
-                </div>
-                <iframe data-aos="fade-up" data-aos-delay="200" width="1366" height="768"
-                    src="{{ $tampilan->link_video }}">
-                </iframe>
-            </div>
         </div>
     </section>
 

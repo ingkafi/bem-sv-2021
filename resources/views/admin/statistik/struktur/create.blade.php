@@ -50,7 +50,7 @@
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
-                            <h4 class="card-title">Upload foto</h4>
+                            <h4 class="card-title">Upload foto (max : 1 MB)</h4>
                             <fieldset class="form-group">
                                 <input type="file" class="form-control-file" id="imgInp" name="file" required autofocus>
                                 @error('file')

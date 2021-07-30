@@ -55,7 +55,7 @@ class StrukturStatController extends Controller
         if ($request->hasFile('file')) {
 
             $request->validate([
-                'foto' => 'mimes:jpeg,bmp,png,jpg,JPG', // Only allow .jpg, .bmp and .png file types.
+                'foto' => 'mimes:jpeg,bmp,png,jpg,JPG | max:10000', // Only allow .jpg, .bmp and .png file types.
             ]);
 
             // Save the file locally in the storage/public/ folder under a new folder named /product
@@ -103,8 +103,9 @@ class StrukturStatController extends Controller
      * @param  \App\Models\Struktur  $info
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $struktur)
+    public function update(Request $request)
     {
+        $strukturs = DB::table('struktur_stats')->where('id',  $request->route('struktur'));
         $request->validate([
             'nama' => 'required',
             'kode_jabatan' => 'required',
@@ -124,18 +125,16 @@ class StrukturStatController extends Controller
         elseif ($request->kode_jabatan == '5'){
             $jabatan = "Divisi Analisis Data dan Database";
         }
-        if ($request->hasFile('foto')) {
+        if ($request->hasFile('file')) {
 
             $request->validate([
-                'foto' => 'mimes:jpeg,bmp,png,jpg' // Only allow .jpg, .bmp and .png file types.
+                'file' => 'mimes:jpeg,bmp,png,jpg | max:1000' // Only allow .jpg, .bmp and .png file types.
             ]);
 
             // Save the file locally in the storage/public/ folder under a new folder named /product
             $name = $request->file->getClientOriginalName();
-            
-            $request->file('foto')->move(public_path() . '/uploads/struktur/', $name);
-            DB::table('strukturs')
-                ->where('id',  $struktur)
+            $request->file('file')->move(public_path() . '/uploads/statisticdiary/', $name);
+            $strukturs
                 ->update([
                     'nama' =>  $request->nama,
                     'kode_jabatan' =>  $request->kode_jabatan,
@@ -144,8 +143,7 @@ class StrukturStatController extends Controller
                 ]);
         } else {
             // Store the record, using the new file hashname which will be it's new filename identity.
-            DB::table('strukturs')
-                ->where('id',  $struktur)
+            $strukturs
                 ->update([
                     'nama' =>  $request->nama,
                     'kode_jabatan' =>  $request->kode_jabatan,
