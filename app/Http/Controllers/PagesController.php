@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Models\Info;
 use App\Models\Tampilan;
 use App\Models\Proker;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class PagesController extends Controller
@@ -26,7 +27,7 @@ class PagesController extends Controller
         $struktur5 = DB::table('struktur_stats')->where('kode_jabatan', '5')->get()->sortBy('created_at');
         $tampilan = Tampilan::first();
         $infos = DB::table('infos')->get()->sortBy('created_at');
-        return view('/statdiary/index', compact('tampilan', 'infos','struktur1','struktur2','struktur3','struktur4','struktur5'));
+        return view('/statdiary/index', compact('tampilan', 'infos', 'struktur1', 'struktur2', 'struktur3', 'struktur4', 'struktur5'));
     }
     public function databasestat()
     {
@@ -34,19 +35,28 @@ class PagesController extends Controller
     }
     public function datastat()
     {
-        $buletinall = DB::table('buletins')->where('status','1')->get();
+        $buletinall = DB::table('buletins')->where('status', '1')->get();
         $buletin1 = $buletinall->first();
-        $buletins = $buletinall->where('id', '!=',$buletin1->id);
+        $buletins = $buletinall->where('id', '!=', $buletin1->id);
         $tampilan = Tampilan::first();
-        return view('/statdiary/bicara-data', compact('tampilan','buletinall','buletin1','buletins'));
+        return view('/statdiary/bicara-data', compact('tampilan', 'buletinall', 'buletin1', 'buletins'));
     }
     public function surveystat()
     {
-        $surveiall = DB::table('surveis')->where('status','1')->get();
+        $surveiall = DB::table('surveis')->where('status', '1')->get();
         $survei1 = $surveiall->first();
-        $surveis = $surveiall->where('id', '!=',$survei1->id);
+        $surveis = $surveiall->where('id', '!=', $survei1->id);
         $tampilan = Tampilan::first();
-        return view('/statdiary/survey', compact('tampilan','surveiall','survei1','surveis'));
+        return view('/statdiary/survey', compact('tampilan', 'surveiall', 'survei1', 'surveis'));
+    }
+
+    public function detailsurveystat()
+    {
+        $surveiall = DB::table('surveis')->where('status', '1')->get();
+        $survei1 = $surveiall->first();
+        $surveis = $surveiall->where('id', '!=', $survei1->id);
+        $tampilan = Tampilan::first();
+        return view('/statdiary/detailsurvey', compact('tampilan', 'surveiall', 'survei1', 'surveis'));
     }
     public function proker()
     {
@@ -57,7 +67,8 @@ class PagesController extends Controller
     public function profil()
     {
         $tampilan = Tampilan::first();
-        return view('/main/profil', compact('tampilan'));
+        $struktur = DB::table('strukturs')->get();
+        return view('/main/profil', compact('tampilan', 'struktur'));
     }
     public function informasi()
     {
@@ -84,7 +95,7 @@ class PagesController extends Controller
         $aspirasi = DB::table('aspirasis')->get()->count();
         $user = DB::table('users')->get()->count();
         $proker = DB::table('prokers')->get()->count();
-        return view('admin/dashboard', compact('info', 'aspirasi', 'user', 'proker','survei','buletin','strukturstat'));
+        return view('admin/dashboard', compact('info', 'aspirasi', 'user', 'proker', 'survei', 'buletin', 'strukturstat'));
     }
     public function tampilan()
     {

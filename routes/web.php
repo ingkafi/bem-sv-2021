@@ -37,6 +37,7 @@ Route::get('/statdiary', [PagesController::class, 'homestat']);
 Route::get('/statdiary/database', [PagesController::class, 'databasestat']);
 Route::get('/statdiary/bicara-data', [PagesController::class, 'datastat']);
 Route::get('/statdiary/survey', [PagesController::class, 'surveystat']);
+Route::get('/statdiary/detailsurvey', [PagesController::class, 'detailsurveystat']);
 
 
 

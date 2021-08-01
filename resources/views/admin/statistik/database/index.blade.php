@@ -127,7 +127,7 @@
                                         </td>
                                         <td>
                                             <a href="">
-                                                <button type="button" class="btn waves-effect waves-light btn-rounded btn-outline-success">Download</button>
+                                                <!-- <button type="button" class="btn waves-effect waves-light btn-rounded btn-outline-success">Download</button> -->
                                             </a>
                                             <a href="/admin/statistik/database/{{ $databases->id }}/edit">
                                                 <button type="button" class="btn waves-effect waves-light btn-rounded btn-outline-primary">Edit</button>
