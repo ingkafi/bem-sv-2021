@@ -23,7 +23,6 @@ use App\Http\Controllers\SurveiController;
 |
 */
 
-Route::get('/statdiary', [PagesController::class, 'homestat']);
 Route::get('/', [PagesController::class, 'home']);
 Route::get('/info', [PagesController::class, 'informasi']);
 Route::get('/info/{info}/show', [PagesController::class, 'showinformasi']);
@@ -31,7 +30,15 @@ Route::get('/proker', [PagesController::class, 'proker']);
 Route::get('/profil', [PagesController::class, 'profil']);
 Route::patch('/aspirasi', [AspirasiController::class, 'store']);
 
-// //login
+
+//statdiary
+Route::get('/statdiary', [PagesController::class, 'homestat']);
+Route::get('/statdiary/database', [PagesController::class, 'databasestat']);
+Route::get('/statdiary/bicara-data', [PagesController::class, 'datastat']);
+Route::get('/statdiary/survey', [PagesController::class, 'surveystat']);
+
+
+
 // Route::get('/login', function () {
 //     return view('/main/login');
 // });

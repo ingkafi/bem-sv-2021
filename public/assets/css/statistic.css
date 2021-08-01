@@ -261,6 +261,41 @@ a:focus {
     background: var(--dark-color);
     padding: 5rem 0;
 }
+    @media (max-width: 768px) {
+        .carousel-inner .carousel-item>div {
+            display: none;
+        }
+
+        .carousel-inner .carousel-item>div:first-child {
+            display: block;
+        }
+    }
+
+    .carousel-inner .carousel-item.active,
+    .carousel-inner .carousel-item-next,
+    .carousel-inner .carousel-item-prev {
+        display: flex;
+    }
+
+    /* display 3 */
+    @media (min-width: 768px) {
+
+        .carousel-inner .carousel-item-right.active,
+        .carousel-inner .carousel-item-next {
+            transform: translateX(33.333%);
+        }
+
+        .carousel-inner .carousel-item-left.active,
+        .carousel-inner .carousel-item-prev {
+            transform: translateX(-33.333%);
+        }
+    }
+
+    .carousel-inner .carousel-item-right,
+    .carousel-inner .carousel-item-left {
+        transform: translateX(0);
+    }
+
 
 /*---------------------------------------
      MENU             
@@ -272,7 +307,7 @@ a:focus {
     padding: 1rem;
 }
 .navbar.solid {
-    background-color: #14192f;
+    background-color: #e9a702;
     transition: background-color 1s ease 0s;
     padding: 1rem;
 }
@@ -394,15 +429,6 @@ a:focus {
     background-repeat: no-repeat;
     vertical-align: middle;
     min-height: 100vh;
-    position: relative;
-}
-.herosurvey {
-    background-image: url("../images/gedung2.JPG");
-    background-size: cover;
-    background-position: top;
-    background-repeat: no-repeat;
-    vertical-align: middle;
-    min-height: 50v;
     position: relative;
 }
 .hero4 {

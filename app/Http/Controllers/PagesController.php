@@ -28,6 +28,26 @@ class PagesController extends Controller
         $infos = DB::table('infos')->get()->sortBy('created_at');
         return view('/statdiary/index', compact('tampilan', 'infos','struktur1','struktur2','struktur3','struktur4','struktur5'));
     }
+    public function databasestat()
+    {
+        return view('/statdiary/database');
+    }
+    public function datastat()
+    {
+        $buletinall = DB::table('buletins')->where('status','1')->get();
+        $buletin1 = $buletinall->first();
+        $buletins = $buletinall->where('id', '!=',$buletin1->id);
+        $tampilan = Tampilan::first();
+        return view('/statdiary/bicara-data', compact('tampilan','buletinall','buletin1','buletins'));
+    }
+    public function surveystat()
+    {
+        $surveiall = DB::table('surveis')->where('status','1')->get();
+        $survei1 = $surveiall->first();
+        $surveis = $surveiall->where('id', '!=',$survei1->id);
+        $tampilan = Tampilan::first();
+        return view('/statdiary/survey', compact('tampilan','surveiall','survei1','surveis'));
+    }
     public function proker()
     {
         $prokers =  Proker::get();

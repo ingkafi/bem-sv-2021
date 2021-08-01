@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="{{ URL::asset('assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('assets/css/font-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('assets/css/aos.css') }}">
-    <link rel="stylesheet" href="{{ URL::asset('assets/css/tooplate-gymso-style.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('assets/css/statistic.css') }}">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     {{-- <link rel="stylesheet" href="css/font-awesome.min.css">
@@ -49,7 +49,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="/statdiary/bicara-data" class="nav-link smoothScroll">Bicara Data Kerja</a>
+                        <a href="/statdiary/bicara-data" class="nav-link smoothScroll">Bicara Data</a>
                     </li>
 
                     <li class="nav-item">
