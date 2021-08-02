@@ -65,7 +65,7 @@
                                                 <p data-aos="fade-up" data-aos-delay="50">
                                                     {{ substr($survei1->isi, 0, 50) }}....
                                                 </p>
-                                                <a href="{{ $survei1->link }}" class="card-text">Baca
+                                                <a href="/statdiary/{{ $survei1->id }}/detailsurvey" class="card-text">Baca
                                                     Selengkapnya</a>
                                             </div>
                                         </div>
@@ -91,7 +91,7 @@
                                                 <p data-aos="fade-up" data-aos-delay="50">
                                                     {{ substr($row->isi, 0, 50) }}....
                                                 </p>
-                                                <a href="{{ $row->link }}" class="card-text">Baca
+                                                <a href="/statdiary/{{ $row->id }}/detailsurvey" class="card-text">Baca
                                                     Selengkapnya</a>
                                             </div>
                                         </div>
