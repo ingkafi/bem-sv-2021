@@ -131,7 +131,7 @@ class BuletinController extends Controller
 
             // Save the file locally in the storage/public/ folder under a new folder named /product
             $name = $request->file('gambar')->getClientOriginalName();
-            $request->file('gambar')->move(public_path() . '/uploads/proker/', $name);
+            $request->file('gambar')->move(public_path() . '/uploads/buletin/', $name);
             Buletin::where('id',  $buletin->id)
                 ->update([
                     'judul' =>  $request->judul,

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Info;
 use App\Models\Tampilan;
+use App\Models\Survei;
 use App\Models\Proker;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -36,10 +37,10 @@ class PagesController extends Controller
     public function datastat()
     {
         $buletinall = DB::table('buletins')->where('status', '1')->get();
-        $buletin1 = $buletinall->first();
-        $buletins = $buletinall->where('id', '!=', $buletin1->id);
+        $buletin1 = $buletinall->sortByDesc('created_at')->first();
+        $buletinpag = DB::table('buletins')->where('status', '1')->orderBy('created_at', 'desc')->simplePaginate(3);
         $tampilan = Tampilan::first();
-        return view('/statdiary/bicara-data', compact('tampilan', 'buletinall', 'buletin1', 'buletins'));
+        return view('/statdiary/bicara-data', compact('tampilan', 'buletinall', 'buletin1', 'buletinpag'));
     }
     public function  detailbicaradata($bicara)
     {
@@ -53,10 +54,10 @@ class PagesController extends Controller
     public function surveystat()
     {
         $surveiall = DB::table('surveis')->where('status', '1')->get();
-        $survei1 = $surveiall->first();
-        $surveis = $surveiall->where('id', '!=', $survei1->id);
+        $survei1 = $surveiall->sortByDesc('created_at')->first();
+        $surveipag = DB::table('surveis')->where('status', '1')->orderBy('created_at', 'desc')->simplePaginate(3);
         $tampilan = Tampilan::first();
-        return view('/statdiary/survey', compact('tampilan', 'surveiall', 'survei1', 'surveis'));
+        return view('/statdiary/survey', compact('tampilan', 'surveipag','surveiall', 'survei1'));
     }
 
     public function detailsurveystat($survey)
