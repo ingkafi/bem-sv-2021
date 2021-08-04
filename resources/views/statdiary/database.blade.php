@@ -46,7 +46,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 col-12 text-center mb-5">
-                    <h2 data-aos="fade-up" data-aos-delay="200">Arsip Database</h2>
+                    <h1 data-aos="fade-up" data-aos-delay="200">Arsip Database</h1>
                 </div>
             </div>
             <div class="class-thumb text-center" data-aos="fade-up">
