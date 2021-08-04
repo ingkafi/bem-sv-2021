@@ -32,7 +32,8 @@ class PagesController extends Controller
     }
     public function databasestat()
     {
-        return view('/statdiary/database');
+        $tampilan = Tampilan::first();
+        return view('/statdiary/database',compact('tampilan'));
     }
     public function datastat()
     {

@@ -37,7 +37,7 @@
             </div>
         </div>
     </section>
-    <section class="schedule section" id="schedule" style="background-color: #e9a702">
+    <section class="schedule section" id="schedule" style="background-color: #ffbc12">
         <div class="container">
             <div class="row">
 
