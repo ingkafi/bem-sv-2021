@@ -4,7 +4,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Info;
+use App\Models\DatabaseAngka;
 use App\Models\Tampilan;
+use App\Models\Database;
 use App\Models\Survei;
 use App\Models\Proker;
 use Illuminate\Http\Request;
@@ -35,7 +37,7 @@ class PagesController extends Controller
     public function databasestat()
     {
         $tampilan = Tampilan::first();
-        $dba = DB::table('database_angkas')->first();
+        $dba = DatabaseAngka::first();
         $databases = DB::table('databases')->get()->sortByDesc('created_at');
         return view('/statdiary/database', compact('tampilan', 'dba', 'databases'));
     }
