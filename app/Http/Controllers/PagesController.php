@@ -35,8 +35,18 @@ class PagesController extends Controller
     public function databasestat()
     {
         $tampilan = Tampilan::first();
-        return view('/statdiary/database',compact('tampilan'));
+        $dba = DB::table('database_angkas')->first();
+        $databases = DB::table('databases')->get()->sortByDesc('created_at');
+        return view('/statdiary/database', compact('tampilan', 'dba', 'databases'));
     }
+
+    public function  detaildatabase($db)
+    {
+        $databases = DB::table('databases')->where('id',  $db)->first();
+        $tampilan = Tampilan::first();
+        return view('/statdiary/detaildatabase', compact('tampilan', 'databases'));
+    }
+
     public function datastat()
     {
         $buletinall = DB::table('buletins')->where('status', '1')->get();
@@ -60,7 +70,7 @@ class PagesController extends Controller
         $survei1 = $surveiall->sortByDesc('created_at')->first();
         $surveipag = DB::table('surveis')->where('status', '1')->orderBy('created_at', 'desc')->simplePaginate(3);
         $tampilan = Tampilan::first();
-        return view('/statdiary/survey', compact('tampilan', 'surveipag','surveiall', 'survei1'));
+        return view('/statdiary/survey', compact('tampilan', 'surveipag', 'surveiall', 'survei1'));
     }
 
     public function detailsurveystat($survey)
