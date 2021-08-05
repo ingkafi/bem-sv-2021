@@ -15,9 +15,11 @@ class PagesController extends Controller
     //LANDING PAGE-------------------------------------------------------------------
     public function home()
     {
+        $infoall = DB::table('infos')->get();
+        $info1 = $infoall->sortByDesc('created_at')->first();
         $tampilan = Tampilan::first();
-        $infos = DB::table('infos')->get()->sortBy('created_at');
-        return view('/main/index', compact('tampilan', 'infos'));
+        $infos = DB::table('infos')->where('id', '!=', $info1->id)->get()->sortBy('created_at');
+        return view('/main/index', compact('tampilan', 'infos','info1'));
     }
     public function homestat()
     {
@@ -84,10 +86,11 @@ class PagesController extends Controller
     }
     public function informasi()
     {
-        $info1 = Info::first();
-        $infos = DB::table('infos')->where('id', '!=', $info1->id)->get()->sortBy('created_at');
+        $infoall = DB::table('infos')->get();
+        $info1 = $infoall->sortByDesc('created_at')->first();
+        $infopag = DB::table('infos')->orderBy('created_at', 'desc')->simplePaginate(3);
         $tampilan = Tampilan::first();
-        return view('/main/info', compact('tampilan', 'info1', 'infos'));
+        return view('/main/info', compact('tampilan', 'info1', 'infoall','infopag'));
     }
     public function showinformasi(Info $info)
     {
