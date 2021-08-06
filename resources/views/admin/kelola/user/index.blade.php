@@ -39,6 +39,8 @@
                                             </th>
                                             <th class="border-0 font-14 font-weight-medium">Tanggal Bergabung
                                             </th>
+                                            <th class="border-0 font-14 font-weight-medium">Jenis
+                                            </th>
                                             <th class="border-0 font-14 font-weight-medium">Aksi
                                             </th>
 
