@@ -21,7 +21,7 @@ class UserController extends Controller
     public function index()
     {
         $users = DB::table('users')->get()->sortByDesc('created_at');
-        return view('admin/kelola/user/index', ['users' => $users]);
+        return view('admin/kelola/user/index', compact('users'));
     }
 
     /**
@@ -51,7 +51,7 @@ class UserController extends Controller
             'name'        =>   $request->name,
             'password'            =>   Hash::make('adminbemsv1'),
         );
-        User::create($form_data); 
+        User::create($form_data);
         Alert::success('Berhasil', 'User Berhasil Ditambahkan');
         return redirect()->action([UserController::class, 'index']);
     }
@@ -93,11 +93,20 @@ class UserController extends Controller
             'name' => 'required',
             'email' => 'required|unique:users,email,' . $user->id,
         ]);
-        User::where('id', $user->id)
-            ->update([
-                'name'       =>   $request->name,
-                'email'       =>   $request->email,
-            ]);
+        if ($request->password == '') {
+            User::where('id', $user->id)
+                ->update([
+                    'name'       =>   $request->name,
+                    'email'       =>   $request->email,
+                ]);
+        } else {
+            User::where('id', $user->id)
+                ->update([
+                    'name'       =>   $request->name,
+                    'email'       =>   $request->email,
+                    'password'            =>   Hash::make($request->password),
+                ]);
+        }
         Alert::success('Berhasil', 'Data User Berhasil Diedit');
         return redirect()->action([UserController::class, 'index']);;
     }
@@ -123,7 +132,7 @@ class UserController extends Controller
             ->update([
                 'password' => Hash::make('adminbemsv1'),
             ]);
-            Alert::success('Berhasil', 'Password User Berhasil Direset');
+        Alert::success('Berhasil', 'Password User Berhasil Direset');
         return redirect()->action([UserController::class, 'index']);
     }
 }
