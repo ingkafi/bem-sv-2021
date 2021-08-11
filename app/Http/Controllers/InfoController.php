@@ -44,6 +44,9 @@ class InfoController extends Controller
         $request->validate([
             'judul' => 'required',
             'isi' => 'required',
+            'cp_nama' => 'required',
+            'cp_line' => 'required',
+            'cp_wa' => 'required',
         ]);
 
         // ensure the request has a file before we attempt anything else.
@@ -62,7 +65,10 @@ class InfoController extends Controller
                 'judul' =>  $request->judul,
                 'isi' =>  $request->isi,
                 'created_by' =>  Auth::user()->name,
-                'file_path' => $name
+                'file_path' => $name,
+                'cp_nama' =>  $request->cp_nama,
+                'cp_line' =>  $request->cp_line,
+                'cp_wa' =>  $request->cp_wa,
             ]);
             $info->save(); // Finally, save the record.
         }
@@ -101,6 +107,9 @@ class InfoController extends Controller
         $request->validate([
             'judul' => 'required',
             'isi' => 'required',
+            'cp_nama' => 'required',
+            'cp_line' => 'required',
+            'cp_wa' => 'required',
         ]);
 
         if ($request->hasFile('file')) {
@@ -117,6 +126,9 @@ class InfoController extends Controller
             Info::where('id',  $info->id)
                 ->update([
                     'judul' =>  $request->judul,
+                    'cp_nama' =>  $request->cp_nama,
+                    'cp_line' =>  $request->cp_line,
+                    'cp_wa' =>  $request->cp_wa,
                     'isi' =>  $request->isi,
                     'created_by' =>  Auth::user()->name,
                     'file_path' => $name

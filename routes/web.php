@@ -12,6 +12,7 @@ use App\Http\Controllers\BuletinController;
 use App\Http\Controllers\StrukturStatController;
 use App\Http\Controllers\SurveiController;
 use App\Http\Controllers\DatabaseController;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,6 +51,8 @@ Route::get('/statdiary/{db}/detaildatabase', [PagesController::class, 'detaildat
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin/dashboard', [PagesController::class, 'admin'])->name('dashboard');
+    Route::get('/admin/edit', [PagesController::class, 'editprofil'])->name('editprofil');
+    Route::patch('/admin/edit', [PagesController::class, 'updateprofil'])->name('updateprofil');
     Route::get('/admin/kelola/info', [PagesController::class, 'info'])->name('info');
     Route::get('/admin/kelola/tampilan', [PagesController::class, 'tampilan'])->name('tampilan');
 

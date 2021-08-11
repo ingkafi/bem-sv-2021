@@ -40,6 +40,10 @@
                             {{ $monthName }}
                             {{ date('Y', strtotime($info->created_at)) }}</b> <br> <br>
                         {{ $info->isi }}</p> <br>
+                    <p data-aos="fade-down" data-aos-delay="300">Contact Person : <br>
+                        <b>{{ $info->cp_nama }} </b>(<a href="http://line.me/ti/p/~{{ $info->cp_line }}">Line </a>/ <a
+                            href="https://wa.me/{{ $info->cp_wa }}">WhatsApp</a>)
+                    </p><br><br>
                     <div data-aos="fade-up" data-aos-delay="600" class="sharethis-inline-share-buttons"></div><br><br>
                     <p data-aos="fade-down" data-aos-delay="300">
                         <a href="/info"><b>Baca Informasi Lainnya</b></a>
@@ -49,7 +53,6 @@
         </div>
         <br><br>
     </div>
-
 @endsection
 </body>
 

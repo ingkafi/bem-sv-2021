@@ -8,7 +8,9 @@
         <div class="page-breadcrumb">
             <div class="row">
                 <div class="col-7 align-self-center">
-                    <h2 class="page-title text-truncate text-dark font-weight-medium mb-1">BEM SV</h2>
+                    <h2 class="page-title text-truncate text-dark font-weight-medium mb-1">BEM SV<a href="/profil"> <button
+                                type="button" class="btn waves-effect btn-sm waves-light btn-rounded btn-outline-info">Lihat
+                                Halaman</button> </a></h2>
                     <div class="d-flex align-items-center">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb m-0 p-0">
@@ -31,9 +33,7 @@
                                 <h3 class="card-title">Tabel Struktur Organisasi <a href="/admin/bem/struktur/create">
                                         <button type="button"
                                             class="btn waves-effect btn-sm waves-light btn-rounded btn-success">Tambah
-                                            Struktur</button> </a><a href="/profil"> <button type="button"
-                                            class="btn waves-effect btn-sm waves-light btn-rounded btn-info">Halaman
-                                            Profil</button> </a></h3>
+                                            Struktur</button> </a></h3>
                             </div>
                             <div class="table-responsive">
                                 <table class="table no-wrap v-middle mb-0" id="myTable">

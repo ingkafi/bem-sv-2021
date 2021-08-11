@@ -42,6 +42,28 @@
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
+                            <h4 class="card-title">Contact Person</h4>
+                            <h5 class="card-title">Nama</h5>
+                            <div class="form-group">
+                                <input type="text" name="cp_nama" id="cp_nama" class="form-control">
+                                @error('cp_nama')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <h5 class="card-title">Line <a class="text-muted">(contoh : plv1845d)</a></h5>
+                            <div class="form-group">
+                                <input type="text" name="cp_line" id="cp_line" class="form-control">
+                                @error('cp_line')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <h5 class="card-title">WhatsApp <a class="text-muted">(contoh : 628123456789)</a></h5>
+                            <div class="form-group">
+                                <input type="text" name="cp_wa" id="cp_wa" class="form-control">
+                                @error('cp_wa')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
                             <h4 class="card-title">Upload Gambar</h4>
                             <fieldset class="form-group">
                                 <input type="file" class="form-control-file" id="imgInp" name="file" required autofocus>

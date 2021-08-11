@@ -18,6 +18,9 @@ class CreateInfosTable extends Migration
             $table->string('judul');
             $table->string('isi');
             $table->string('file_path');
+            $table->string('cp_nama')->nullable();
+            $table->string('cp_line')->nullable();
+            $table->string('cp_wa')->nullable();
             $table->string('created_by');
             $table->timestamps();
         });

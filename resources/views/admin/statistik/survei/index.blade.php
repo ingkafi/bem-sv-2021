@@ -8,7 +8,11 @@
         <div class="page-breadcrumb">
             <div class="row">
                 <div class="col-7 align-self-center">
-                    <h2 class="page-title text-truncate text-dark font-weight-medium mb-1">Biro Statistik</h2>
+                    <h2 class="page-title text-truncate text-dark font-weight-medium mb-1">Biro Statistik<a
+                            href="/statdiary/survey">
+                            <button type="button"
+                                class="btn waves-effect btn-sm waves-light btn-rounded btn-outline-info">Lihat
+                                Halaman</button> </a></h2>
                     <div class="d-flex align-items-center">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb m-0 p-0">

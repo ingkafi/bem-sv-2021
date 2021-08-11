@@ -196,13 +196,17 @@
                                 aria-expanded="false"><i data-feather="database" class="feather-icon"></i><span
                                     class="hide-menu">Database</span></a></li>
                         <li class="list-divider"></li>
-
-
+                        <li class="nav-small-cap"><span class="hide-menu">Web</span></li>
+                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="/" aria-expanded="false"><i
+                                    data-feather="monitor" class="feather-icon"></i><span class="hide-menu"> BEM
+                                    SV</span></a></li>
+                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="/statdiary"
+                                aria-expanded="false"><i data-feather="monitor" class="feather-icon"></i><span
+                                    class="hide-menu">
+                                    Statistic Diary</span></a></li>
 
                         <li class="list-divider"></li>
-                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="/" aria-expanded="false"><i
-                                    data-feather="monitor" class="feather-icon"></i><span class="hide-menu">Tampilan
-                                    Utama</span></a></li>
+                        <li class="nav-small-cap"><span class="hide-menu">Profil</span></li>
                         <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="/admin/edit"
                                 aria-expanded="false"><i data-feather="user-check" class="feather-icon"></i><span
                                     class="hide-menu">Edit Profil</span></a></li>

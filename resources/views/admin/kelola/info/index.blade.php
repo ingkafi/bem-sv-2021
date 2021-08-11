@@ -8,7 +8,9 @@
         <div class="page-breadcrumb">
             <div class="row">
                 <div class="col-7 align-self-center">
-                    <h2 class="page-title text-truncate text-dark font-weight-medium mb-1">Kelola</h2>
+                    <h2 class="page-title text-truncate text-dark font-weight-medium mb-1">Kelola<a href="/info"> <button
+                                type="button" class="btn waves-effect btn-sm waves-light btn-rounded btn-outline-info">Lihat
+                                Halaman</button> </a></h2>
                     <div class="d-flex align-items-center">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb m-0 p-0">
@@ -30,8 +32,6 @@
                                 <h3 class="card-title">Tabel Informasi <a href="/admin/kelola/info/create"> <button
                                             type="button"
                                             class="btn waves-effect btn-sm waves-light btn-rounded btn-success">Tambah
-                                            Informasi</button> </a><a href="/info"> <button type="button"
-                                            class="btn waves-effect btn-sm waves-light btn-rounded btn-info">Halaman
                                             Informasi</button> </a></h3>
                             </div>
                             <div class="table-responsive">
@@ -73,7 +73,7 @@
                                                     {{ date('Y', strtotime($row->created_at)) }}
                                                 </td>
                                                 <td>
-                                                    {{ $row->created_by }}
+                                                    {{ $row->cp_nama }}
                                                 </td>
                                                 <td>
                                                     <a href="/info/{{ $row->id }}/show">

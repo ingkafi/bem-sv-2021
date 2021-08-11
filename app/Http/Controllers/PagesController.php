@@ -7,10 +7,15 @@ use App\Models\Info;
 use App\Models\DatabaseAngka;
 use App\Models\Tampilan;
 use App\Models\Database;
-use App\Models\Survei;
+use App\Models\User;
 use App\Models\Proker;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
+use RealRashid\SweetAlert\Facades\Alert;
+
+use function PHPUnit\Framework\isNull;
 
 class PagesController extends Controller
 {
@@ -124,6 +129,47 @@ class PagesController extends Controller
         $proker = DB::table('prokers')->get()->count();
         return view('admin/dashboard', compact('info', 'aspirasi', 'user', 'proker', 'survei', 'buletin', 'strukturstat'));
     }
+    public function editprofil()
+    {
+        return view('admin/editprofil');
+    }
+    public function updateprofil(Request $request)
+    {
+        $user =  DB::table('users')->where('id', Auth::user()->id)->first();
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|unique:users,email,' .  Auth::user()->id,
+        ]);
+        if ($request->password == null and $request->current_password == null and $request->password_confirmation ==null ) {
+            User::where('id',  Auth::user()->id)
+                ->update([
+                    'name'       =>   $request->name,
+                    'email'       =>   $request->email,
+                ]);
+                Alert::success('Berhasil', 'Edit Profil Berhasil');
+                return redirect()->action([PagesController::class, 'editprofil']);
+        } else {
+            $request->validate([
+                'current_password' => 'required',
+                'password' => 'required|string|min:8|confirmed',
+                'password_confirmation' => 'required',
+            ]);
+                if (Hash::check($request->current_password, $user->password)) {
+                    User::where('id',  Auth::user()->id)
+                    ->update([
+                        'name'       =>   $request->name,
+                        'email'       =>   $request->email,
+                        'password'       =>  Hash::make($request->password),
+                    ]);
+                    Alert::success('Berhasil', 'Edit Profil Berhasil');
+                    return redirect()->action([PagesController::class, 'editprofil']);
+                } else {
+                    Alert::warning('Gagal', 'Password Lama Salah');
+                    return redirect()->action([PagesController::class, 'editprofil']);
+                }
+        }
+    }
+
     public function tampilan()
     {
         return view('admin/kelola/tampilan/index');
