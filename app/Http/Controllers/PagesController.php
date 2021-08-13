@@ -26,7 +26,7 @@ class PagesController extends Controller
         $info1 = $infoall->sortByDesc('created_at')->first();
         $tampilan = Tampilan::first();
         $infos = DB::table('infos')->where('id', '!=', $info1->id)->get()->sortBy('created_at');
-        return view('/main/index', compact('tampilan', 'infos','info1'));
+        return view('/main/index', compact('tampilan', 'infos', 'info1'));
     }
     public function homestat()
     {
@@ -98,16 +98,16 @@ class PagesController extends Controller
     public function profil(Request $request)
     {
         $tampilan = Tampilan::first();
-        $struktur = DB::table('strukturs')->where('tahun',$request->route('tahun'))->get();
+        $struktur = DB::table('strukturs')->where('tahun', $request->route('tahun'))->get();
         return view('/main/profil', compact('tampilan', 'struktur'));
     }
     public function informasi()
     {
-        $infoall = DB::table('infos')->get();
+        $infoall = DB::table('infos')->where('status', '1')->get();
         $info1 = $infoall->sortByDesc('created_at')->first();
         $infopag = DB::table('infos')->orderBy('created_at', 'desc')->simplePaginate(3);
         $tampilan = Tampilan::first();
-        return view('/main/info', compact('tampilan', 'info1', 'infoall','infopag'));
+        return view('/main/info', compact('tampilan', 'info1', 'infoall', 'infopag'));
     }
     public function showinformasi(Info $info)
     {
@@ -140,33 +140,33 @@ class PagesController extends Controller
             'name' => 'required',
             'email' => 'required|unique:users,email,' .  Auth::user()->id,
         ]);
-        if ($request->password == null and $request->current_password == null and $request->password_confirmation ==null ) {
+        if ($request->password == null and $request->current_password == null and $request->password_confirmation == null) {
             User::where('id',  Auth::user()->id)
                 ->update([
                     'name'       =>   $request->name,
                     'email'       =>   $request->email,
                 ]);
-                Alert::success('Berhasil', 'Edit Profil Berhasil');
-                return redirect()->action([PagesController::class, 'editprofil']);
+            Alert::success('Berhasil', 'Edit Profil Berhasil');
+            return redirect()->action([PagesController::class, 'editprofil']);
         } else {
             $request->validate([
                 'current_password' => 'required',
                 'password' => 'required|string|min:8|confirmed',
                 'password_confirmation' => 'required',
             ]);
-                if (Hash::check($request->current_password, $user->password)) {
-                    User::where('id',  Auth::user()->id)
+            if (Hash::check($request->current_password, $user->password)) {
+                User::where('id',  Auth::user()->id)
                     ->update([
                         'name'       =>   $request->name,
                         'email'       =>   $request->email,
                         'password'       =>  Hash::make($request->password),
                     ]);
-                    Alert::success('Berhasil', 'Edit Profil Berhasil');
-                    return redirect()->action([PagesController::class, 'editprofil']);
-                } else {
-                    Alert::warning('Gagal', 'Password Lama Salah');
-                    return redirect()->action([PagesController::class, 'editprofil']);
-                }
+                Alert::success('Berhasil', 'Edit Profil Berhasil');
+                return redirect()->action([PagesController::class, 'editprofil']);
+            } else {
+                Alert::warning('Gagal', 'Password Lama Salah');
+                return redirect()->action([PagesController::class, 'editprofil']);
+            }
         }
     }
 

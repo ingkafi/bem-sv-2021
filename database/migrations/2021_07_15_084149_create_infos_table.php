@@ -14,13 +14,14 @@ class CreateInfosTable extends Migration
     public function up()
     {
         Schema::create('infos', function (Blueprint $table) {
-            $table->id('id');
+            $table->bigIncrements('id');
             $table->string('judul');
             $table->string('isi');
             $table->string('file_path');
             $table->string('cp_nama')->nullable();
             $table->string('cp_line')->nullable();
             $table->string('cp_wa')->nullable();
+            $table->string('status')->nullable();
             $table->string('created_by');
             $table->timestamps();
         });

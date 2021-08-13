@@ -50,28 +50,27 @@ class InfoController extends Controller
         ]);
 
         // ensure the request has a file before we attempt anything else.
-        if ($request->hasFile('file')) {
+        $request->validate([
+            'gambar' => 'mimes:jpeg,bmp,png,jpg' // Only allow .jpg, .bmp and .png file types.
+        ]);
 
-            $request->validate([
-                'gambar' => 'mimes:jpeg,bmp,png,jpg' // Only allow .jpg, .bmp and .png file types.
-            ]);
+        // Save the file locally in the storage/public/ folder under a new folder named /product
+        $name = $request->file->getClientOriginalName();
+        $request->file->move(public_path() . '/uploads/informasi/', $name);
 
-            // Save the file locally in the storage/public/ folder under a new folder named /product
-            $name = $request->file->getClientOriginalName();
-            $request->file->move(public_path() . '/uploads/informasi/', $name);
-
-            // Store the record, using the new file hashname which will be it's new filename identity.
-            $info = new Info([
-                'judul' =>  $request->judul,
-                'isi' =>  $request->isi,
-                'created_by' =>  Auth::user()->name,
-                'file_path' => $name,
-                'cp_nama' =>  $request->cp_nama,
-                'cp_line' =>  $request->cp_line,
-                'cp_wa' =>  $request->cp_wa,
-            ]);
-            $info->save(); // Finally, save the record.
-        }
+        // Store the record, using the new file hashname which will be it's new filename identity.
+        $info = new Info([
+            'judul' =>  $request->judul,
+            'isi' =>  $request->isi,
+            'created_by' =>  Auth::user()->name,
+            'file_path' => $name,
+            'cp_nama' =>  $request->cp_nama,
+            'cp_line' =>  $request->cp_line,
+            'cp_wa' =>  $request->cp_wa,
+            'status' => $request->status
+        ]);
+        $info->save(); // Finally, save the record.
+        // dd($request);
         Alert::success('Berhasil', 'Informasi Berhasil Ditambahkan');
         return redirect()->action([InfoController::class, 'index']);
     }
@@ -150,6 +149,36 @@ class InfoController extends Controller
         $info = Info::where('id',  $request->route('info'));
         $info->delete();
         Alert::success('Berhasil', 'Informasi Telah Dihapus');
+        return redirect()->action([InfoController::class, 'index']);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Info  $info
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Request $request)
+    {
+        $Info = Info::where('id',  $request->route('info'))->first();
+
+        $Info->status = '1';
+
+        $Info->save();
+        Alert::success('Berhasil', 'Info Berhasil Ditampilkan');
+        // dd($request);
+        return redirect()->action([InfoController::class, 'index']);
+    }
+    public function hide(Request $request)
+    {
+        $Info = Info::where('id',  $request->route('info'))->first();
+
+        $Info->status = '0';
+
+        $Info->save();
+        Alert::success('Berhasil', 'Info Berhasil Diarsip');
+        // dd($request);
         return redirect()->action([InfoController::class, 'index']);
     }
 }

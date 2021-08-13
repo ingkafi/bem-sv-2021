@@ -46,7 +46,7 @@ class AspirasiController extends Controller
             'nama'       =>   $request->nama,
             'isi'        =>   $request->isi,
         );
-        Aspirasi::create($form_data); 
+        Aspirasi::create($form_data);
         Alert::success('Berhasil', 'Terima kasih atas kritk dan sarannya!');
         return redirect()->action([PagesController::class, 'home']);
     }

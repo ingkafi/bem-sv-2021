@@ -76,6 +76,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin/kelola/info/{info}/delete', [InfoController::class, 'delete']);
     Route::get('/admin/kelola/info/{info}/edit', [InfoController::class, 'edit']);
     Route::patch('/admin/kelola/info/{info}/edit', [InfoController::class, 'update']);
+    Route::get('/admin/kelola/info/{info}/show', [InfoController::class, 'show'])->name('show');
+    Route::get('/admin/kelola/info/{info}/hide', [InfoController::class, 'hide'])->name('hide');
 
 
     //Aspirasi
