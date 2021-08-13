@@ -29,7 +29,7 @@
                             @method('patch')
                             @csrf
                             <div class="card-body">
-                                <h4 class="card-title">Prgram Studi</h4>
+                                <h4 class="card-title">Program Studi</h4>
                                 <div class="form-group">
                                     <input type="text" name="prodi" id="prodi" value="{{ $database_angkas->prodi }} "
                                         class="form-control">

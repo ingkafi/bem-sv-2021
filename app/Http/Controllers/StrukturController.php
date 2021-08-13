@@ -22,15 +22,22 @@ class StrukturController extends Controller
         $strukturs = DB::table('strukturs')->get()->sortByDesc('created_at');
         return view('admin/bem/struktur/index', ['strukturs' => $strukturs]);
     }
+    public function detail(Request $request)
+    {
+        $strukturs = DB::table('strukturs')->where('tahun', $request->route('tahun'))->get()->sortByDesc('created_at');
+        $kabinet = DB::table('kabinets')->where('tahun', $request->route('tahun'))->get()->first();
+        return view('admin/bem/struktur/detail', compact('strukturs', 'kabinet'));
+    }
 
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        return view('admin/bem/struktur/create');
+        $kabinet = DB::table('kabinets')->where('tahun', $request->route('tahun'))->get()->first();
+        return view('admin/bem/struktur/create',  compact('kabinet'));
     }
 
     /**
@@ -70,6 +77,7 @@ class StrukturController extends Controller
         $strukturs = new Struktur;
         $strukturs->bidang =  $request->input('bidang');
         $strukturs->gambar =  $name;
+        $strukturs->tahun =  $request->route('tahun');
 
         // $proker = new Proker([
         //     'proker' =>  $request->proker,
@@ -80,7 +88,7 @@ class StrukturController extends Controller
         $strukturs->save(); // Finally, save the record.W
         // return $request;
         Alert::success('Berhasil', 'Struktur Berhasil Ditambahkan');
-        return redirect()->action([StrukturController::class, 'index']);
+        return redirect()->action([StrukturController::class, 'detail'], ['tahun' => $strukturs->tahun]);
     }
 
     /**
@@ -99,8 +107,8 @@ class StrukturController extends Controller
     public function edit(Request $request)
     {
         $strukturs = DB::table('strukturs')->where('id',  $request->route('struktur'))->first();
-        // dd($strukturs);
-        return view('admin/bem/struktur/edit', compact('strukturs'));
+        $kabinet = DB::table('kabinets')->where('tahun', $strukturs->tahun)->get()->first();
+        return view('admin/bem/struktur/edit', compact('strukturs','kabinet'));
     }
 
     /**
@@ -112,6 +120,7 @@ class StrukturController extends Controller
      */
     public function update(Request $request, $struktur)
     {
+        $strukturs = DB::table('strukturs')->where('id',  $struktur)->first();
         $request->validate([
             'bidang' => 'required',
         ]);
@@ -140,7 +149,7 @@ class StrukturController extends Controller
         }
         // $strukturs->save(); // Finally, save the record.
         Alert::success('Berhasil', 'Struktur Berhasil Diedit');
-        return redirect()->action([StrukturController::class, 'index']);
+        return redirect()->action([StrukturController::class, 'detail'], ['tahun' => $strukturs->tahun]);
     }
 
     /**
@@ -151,9 +160,9 @@ class StrukturController extends Controller
      */
     public function delete(Request $request)
     {
-        $strukturs = Struktur::where('id',  $request->route('struktur'));
+        $strukturs = Struktur::where('id',  $request->route('struktur'))->first();
         $strukturs->delete();
         Alert::success('Berhasil', 'Struktur Telah Dihapus');
-        return redirect()->action([StrukturController::class, 'index']);
+        return redirect()->action([StrukturController::class, 'detail'], ['tahun' => $strukturs->tahun]);
     }
 }

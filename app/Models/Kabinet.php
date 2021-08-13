@@ -5,8 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Struktur extends Model
+class Kabinet extends Model
 {
-    protected $table = "strukturs";
-    protected $fillable = ['bidang', 'gambar','tahun'];
+    protected $table = "kabinets";
+    protected $fillable = ['nama', 'tahun','visibility','gambar'];
 }

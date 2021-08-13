@@ -51,9 +51,16 @@
                     <li class="nav-item">
                         <a href="/proker" class="nav-link smoothScroll">Program Kerja</a>
                     </li>
-
-                    <li class="nav-item">
-                        <a href="/profil" class="nav-link smoothScroll">Profil BEM SV</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            Profil BEM SV
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            @foreach (App\Models\Kabinet::get() as $kab)
+                                <a class="dropdown-item" href="/profil/{{ $kab->tahun }}">{{ $kab->nama }}</a>
+                            @endforeach
+                        </div>
                     </li>
                     <li class="nav-item">
                         <a href="/statdiary" class="nav-link smoothScroll">Stat Diary</a>

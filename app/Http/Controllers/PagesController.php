@@ -95,10 +95,10 @@ class PagesController extends Controller
         $tampilan = Tampilan::first();
         return view('/main/proker', compact('tampilan', 'prokers'));
     }
-    public function profil()
+    public function profil(Request $request)
     {
         $tampilan = Tampilan::first();
-        $struktur = DB::table('strukturs')->get();
+        $struktur = DB::table('strukturs')->where('tahun',$request->route('tahun'))->get();
         return view('/main/profil', compact('tampilan', 'struktur'));
     }
     public function informasi()

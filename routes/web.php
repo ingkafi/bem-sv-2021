@@ -29,9 +29,8 @@ Route::get('/', [PagesController::class, 'home']);
 Route::get('/info', [PagesController::class, 'informasi']);
 Route::get('/info/{info}/show', [PagesController::class, 'showinformasi']);
 Route::get('/proker', [PagesController::class, 'proker']);
-Route::get('/profil', [PagesController::class, 'profil']);
+Route::get('/profil/{tahun}', [PagesController::class, 'profil']);
 Route::patch('/aspirasi', [AspirasiController::class, 'store']);
-
 
 //statdiary
 Route::get('/statdiary', [PagesController::class, 'homestat']);
@@ -92,8 +91,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     //struktur
     Route::get('/admin/bem/struktur', [StrukturController::class, 'index'])->name('index');
-    Route::get('/admin/bem/struktur/create', [StrukturController::class, 'create'])->name('create');
-    Route::patch('/admin/bem/struktur/store', [StrukturController::class, 'store'])->name('store');
+    Route::get('/admin/bem/struktur/{tahun}', [StrukturController::class, 'detail'])->name('detail');
+    Route::get('/admin/bem/struktur/{tahun}/create', [StrukturController::class, 'create'])->name('create');
+    Route::patch('/admin/bem/struktur/{tahun}/store', [StrukturController::class, 'store'])->name('store');
     Route::get('/admin/bem/struktur/{struktur}/delete', [StrukturController::class, 'delete'])->name('delete');
     Route::get('/admin/bem/struktur/{struktur}/edit', [StrukturController::class, 'edit'])->name('edit');
     Route::patch('/admin/bem/struktur/{struktur}/update', [StrukturController::class, 'update'])->name('update');
