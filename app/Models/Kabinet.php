@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Kabinet extends Model
 {
     protected $table = "kabinets";
-    protected $fillable = ['nama', 'tahun','visibility','gambar'];
+    protected $fillable = ['nama', 'tahun','visibility','status','gambar'];
 }

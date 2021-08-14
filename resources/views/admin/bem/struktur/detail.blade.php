@@ -156,7 +156,7 @@
                                     <h4 class="card-title">Visibilitas</h4>
                                     <div class="form-group">
                                         <select class="form-control" id="visibility" name="visibility">
-                                            <option selected disabled>Tampilkan Kabinet?</option>
+                                            <option selected disabled>Tampilkan Kabinet</option>
                                             @if ($kabinet->visibility == '1')
                                                 <option value="1" selected>Ya</option>
                                                 <option value="0">Tidak</option>
@@ -183,11 +183,28 @@
                                 </div>
                             </div>
                             <div class="col-md-6">
+
+                                <div class="card-body">
+                                    <h4 class="card-title">Status</h4>
+                                    <div class="form-group">
+                                        <select class="form-control" id="status" name="status">
+                                            <option selected disabled>Status Keaktifan</option>
+                                            @if ($kabinet->status == '1')
+                                                <option value="1" selected>Aktif</option>
+                                                <option value="0">Tidak Aktif</option>
+                                            @else
+                                                <option value="0">Aktif</option>
+                                                <option value="1" selected>Tidak Aktif</option>
+                                            @endif
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
                                 <div class="card-body">
                                     <h4 class="card-title">Upload Gambar</h4>
                                     <fieldset class="form-group">
-                                        <input type="file" class="form-control-file" id="imgInp" name="gambar" required
-                                            autofocus>
+                                        <input type="file" class="form-control-file" id="imgInp" name="gambar">
                                         @error('gambar')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
@@ -195,11 +212,15 @@
                                     <img id='img-upload' style="width: 600px" /> <br>
                                 </div>
                             </div>
+
                         </div>
                         <div class="col-md-12">
                             <div class="text-center">
                                 <button type="submit" id="submit"
                                     class="btn waves-effect waves-light btn-rounded btn-success">Submit</button>
+                                <a href=""><button
+                                        class="btn waves-effect waves-light btn-rounded btn-outline-danger">Batal</button></a>
+
                             </div>
                         </div>
                         <br><br>

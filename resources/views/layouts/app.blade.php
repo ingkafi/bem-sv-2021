@@ -184,7 +184,7 @@
                                     class="hide-menu">Struktur
                                 </span></a>
                         </li>
-                        <li class="sidebar-item"> <a class="sidebar-link" href="/admin/statistik/buletin"
+                        <li class="sidebar-item"> <a href="/admin/statistik/buletin" class="sidebar-link"
                                 aria-expanded="false"><i data-feather="book-open" class="feather-icon"></i><span
                                     class="hide-menu">Buletin
                                 </span></a>
@@ -200,7 +200,7 @@
                         <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="/" aria-expanded="false"><i
                                     data-feather="monitor" class="feather-icon"></i><span class="hide-menu"> BEM
                                     SV</span></a></li>
-                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="/statdiary"
+                        <li class="sidebar-item"> <a href="/statdiary" class="sidebar-link sidebar-link"
                                 aria-expanded="false"><i data-feather="monitor" class="feather-icon"></i><span
                                     class="hide-menu">
                                     Statistic Diary</span></a></li>
@@ -256,6 +256,11 @@
         <script src="{{ URL::asset('admin/dist/js/pages/dashboards/dashboard1.min.js') }}"></script>
         <script src="{{ URL::asset('admin/assets/extra-libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
         <script src="{{ URL::asset('admin/dist/js/pages/datatable/datatable-basic.init.js') }}"></script>
+        <script>
+            $(function() {
+                $('nav a[href^="/' + location.pathname.split("/")[1] + '"]').addClass('active');
+            });
+        </script>
         <div class="main-content" id="panel">
             @include('sweetalert::alert')
             @yield('content')

@@ -19,6 +19,7 @@ class CreateKabinetsTable extends Migration
             $table->integer('tahun');
             $table->string('gambar')->nullable();
             $table->string('visibility')->nullable();
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }
