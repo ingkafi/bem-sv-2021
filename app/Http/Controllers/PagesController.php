@@ -105,7 +105,7 @@ class PagesController extends Controller
     {
         $infoall = DB::table('infos')->where('status', '1')->get();
         $info1 = $infoall->sortByDesc('created_at')->first();
-        $infopag = DB::table('infos')->orderBy('created_at', 'desc')->simplePaginate(3);
+        $infopag = DB::table('infos')->where('status', '1')->orderBy('created_at', 'desc')->simplePaginate(3);
         $tampilan = Tampilan::first();
         return view('/main/info', compact('tampilan', 'info1', 'infoall', 'infopag'));
     }

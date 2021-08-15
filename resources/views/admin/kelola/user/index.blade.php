@@ -77,9 +77,9 @@
                         <td></td>
                         @else
                         <td class="font-weight-medium text-muted">
-                            <a href="/admin/kelola/user/{{ $row->id }}/edit">
+                            <!-- <a href="/admin/kelola/user/{{ $row->id }}/edit">
                                 <button type="button" class="btn waves-effect waves-light btn-rounded btn-outline-primary">Edit</button>
-                            </a>
+                            </a> -->
                             <a>
                                 <button type="button" data-toggle="modal" data-target="#danger-header-modal-2" data-item="{{ $row->id }}" class="btn waves-effect waves-light btn-rounded btn-outline-danger reset">Reset
                                     Password</button>

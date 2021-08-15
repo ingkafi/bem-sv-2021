@@ -16,8 +16,7 @@
     <link rel="stylesheet" href="{{ URL::asset('assets/css/font-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('assets/css/aos.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('assets/css/statistic.css') }}">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     {{-- <link rel="stylesheet" href="css/font-awesome.min.css">
      <link rel="stylesheet" href="css/aos.css">
 
@@ -31,10 +30,9 @@
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
 
-            <a class="navbar-brand" href="/">BEM SV UNDIP 2021</a>
+            <a class="navbar-brand" href="/statdiary">STATISTIC DIARY</a>
 
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -119,8 +117,7 @@
                     <h2 class="mb-0 pb-0" data-aos="fade-up" data-aos-delay="200">Punya Kritik & Saran?</h2>
                     <h2 class="mb-0 pb-2" data-aos="fade-up" data-aos-delay="200">Tulis Yuk!</h2>
 
-                    <form action="/aspirasi" method="post" class="contact-form webform" data-aos="fade-up"
-                        data-aos-delay="400" role="form">
+                    <form action="/aspirasi" method="post" class="contact-form webform" data-aos="fade-up" data-aos-delay="400" role="form">
                         @method('patch')
                         @csrf
                         <input type="text" class="form-control" name="nama" placeholder="Nama">
@@ -141,8 +138,7 @@
                                  4. Copy only URL and paste it within the src="" field below
                                 -->
                     <div class="google-map" data-aos="fade-up" data-aos-delay="900">
-                        <iframe src="{{ $tampilan->link_maps }}" width="700" height="400" frameborder="0"
-                            style="border:0;" allowfullscreen=""></iframe>
+                        <iframe src="{{ $tampilan->link_maps }}" width="700" height="400" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
                     </div>
                 </div>
 
