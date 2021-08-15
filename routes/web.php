@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AspirasiController;
+use App\Http\Controllers\KabinetController;
 use App\Http\Controllers\InfoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
@@ -100,7 +101,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin/bem/struktur/{struktur}/edit', [StrukturController::class, 'edit'])->name('edit');
     Route::patch('/admin/bem/struktur/{struktur}/update', [StrukturController::class, 'update'])->name('update');
 
-    //struktur
+    //struktur stat
     Route::get('/admin/statistik/struktur', [StrukturStatController::class, 'index'])->name('index');
     Route::get('/admin/statistik/struktur/create', [StrukturStatController::class, 'create'])->name('create');
     Route::patch('/admin/statistik/struktur/store', [StrukturStatController::class, 'store'])->name('store');
@@ -137,8 +138,17 @@ Route::group(['middleware' => 'auth'], function () {
     Route::patch('/admin/statistik/buletin/{buletin}/update', [BuletinController::class, 'update'])->name('update');
     Route::get('/admin/statistik/buletin/{buletin}/show', [BuletinController::class, 'show'])->name('show');
     Route::get('/admin/statistik/buletin/{buletin}/hide', [BuletinController::class, 'hide'])->name('hide');
-    // Route::get('/admin/bem', [PagesController::class, 'admin'])->name('admin');
-    // Route::get('/admin/statistik', [PagesController::class, 'admin'])->name('admin');
-    // Route::get('/admin/profil', [PagesController::class, 'admin'])->name('admin');
+    
+    //kabinet
+    Route::get('/admin/bem/kabinet', [KabinetController::class, 'index'])->name('index');
+    Route::get('/admin/bem/kabinet/create', [KabinetController::class, 'create'])->name('create');
+    Route::patch('/admin/bem/kabinet/create', [KabinetController::class, 'store'])->name('store');
+    Route::patch('/admin/bem/kabinet/{kabinet}/publish', [KabinetController::class, 'publish'])->name('publish');
+    Route::get('/admin/bem/kabinet/{kabinet}/delete', [KabinetController::class, 'delete'])->name('delete');
+    Route::get('/admin/bem/kabinet/{kabinet}/edit', [KabinetController::class, 'edit'])->name('edit');
+    Route::patch('/admin/bem/kabinet/{kabinet}/update', [KabinetController::class, 'update'])->name('update');
+    Route::get('/admin/bem/kabinet/{kabinet}/show', [KabinetController::class, 'show'])->name('show');
+    Route::get('/admin/bem/kabinet/{kabinet}/hide', [KabinetController::class, 'hide'])->name('hide');
+    Route::get('/admin/bem/kabinet/{kabinet}/active', [KabinetController::class, 'active'])->name('active');
 });
 require __DIR__ . '/auth.php';

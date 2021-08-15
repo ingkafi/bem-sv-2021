@@ -170,9 +170,9 @@
                         <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="/admin/bem/program"
                                 aria-expanded="false"><i data-feather="award" class="feather-icon"></i><span
                                     class="hide-menu">Program Kerja</span></a></li>
-                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="/admin/bem/struktur"
+                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="/admin/bem/kabinet"
                                 aria-expanded="false"><i data-feather="users" class="feather-icon"></i><span
-                                    class="hide-menu">Struktur</span></a></li>
+                                    class="hide-menu">Kabinet & Struktur</span></a></li>
                         <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="/admin/bem/aspirasi"
                                 aria-expanded="false"><i data-feather="smile" class="feather-icon"></i><span
                                     class="hide-menu">Aspirasi</span></a></li>

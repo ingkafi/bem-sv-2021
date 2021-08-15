@@ -8,10 +8,11 @@
         <div class="page-breadcrumb">
             <div class="row">
                 <div class="col-7 align-self-center">
-                    <h2 class="page-title text-truncate text-dark font-weight-medium mb-1">BEM SV <a
-                            href="/admin/bem/kabinet/create">
-                            <button type="button" class="btn waves-effect btn-sm waves-light btn-rounded btn-success">Tambah
-                                Kabinet</button></h2>
+                    <h2 class="page-title text-truncate text-dark font-weight-medium mb-1">BEM SV<a
+                            href="/profil/{{ $kabinets->tahun }}">
+                            <button type="button"
+                                class="btn waves-effect btn-sm waves-light btn-rounded btn-outline-info">Lihat
+                                Halaman</button> </a> </h2>
                     <div class="d-flex align-items-center">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb m-0 p-0">
@@ -30,10 +31,10 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex align-items-center mb-4">
-                                <h3 class="card-title">Tabel Informasi <a href="/admin/kelola/info/create"> <button
+                                <h3 class="card-title">Tabel Kabinet <a href="/admin/bem/kabinet/create"> <button
                                             type="button"
                                             class="btn waves-effect btn-sm waves-light btn-rounded btn-success">Tambah
-                                            Informasi</button> </a></h3>
+                                            Kabinet</button> </a></h3>
                             </div>
                             <div class="table-responsive">
                                 <table class="table no-wrap v-middle mb-0 table-hover" id="myTable">
@@ -92,20 +93,26 @@
                                                         @if ($row->status == '1')
                                                             <button type="button" disabled
                                                                 class="btn waves-effect waves-light btn-rounded btn-success disabled"
-                                                                title="Aktifkan"><i data-feather="check"
-                                                                    class="feather-icon"></i></button>
+                                                                title="Aktifkan"><i data-feather="check-square"
+                                                                    class=" feather-icon"></i></button>
                                                         @else
                                                             <a href="/admin/bem/kabinet/{{ $row->id }}/active">
                                                                 <button type="button"
                                                                     class="btn waves-effect waves-light btn-rounded btn-success"
-                                                                    title="Aktifkan"><i data-feather="check"
+                                                                    title="Aktifkan"><i data-feather="square"
                                                                         class="feather-icon"></i></button>
                                                             </a>
                                                         @endif
+                                                        <a href="/admin/bem/struktur/{{ $row->tahun }}">
+                                                            <button type="button"
+                                                                class="btn waves-effect waves-light btn-rounded btn-warning"
+                                                                title="Edit Struktur"><i data-feather="users"
+                                                                    class="feather-icon"></i></button>
+                                                        </a>
                                                         <a href="/admin/bem/kabinet/{{ $row->id }}/edit">
                                                             <button type="button"
                                                                 class="btn waves-effect waves-light btn-rounded btn-info"
-                                                                title="Edit"><i data-feather="edit"
+                                                                title="Edit Kabinet"><i data-feather="edit"
                                                                     class="feather-icon"></i></button></a>
                                                     </td>
                                                 @elseif ($row->visibility == '0')
@@ -121,7 +128,13 @@
                                                         <a href="/admin/bem/kabinet/{{ $row->id }}/edit">
                                                             <button type="button"
                                                                 class="btn waves-effect waves-light btn-rounded btn-info"
-                                                                title="Edit"><i data-feather="edit"
+                                                                title="Edit Kabinet"><i data-feather="edit"
+                                                                    class="feather-icon"></i></button>
+                                                        </a>
+                                                        <a href="/admin/bem/struktur/{{ $row->tahun }}">
+                                                            <button type="button"
+                                                                class="btn waves-effect waves-light btn-rounded btn-warning"
+                                                                title="Edit Struktur"><i data-feather="users"
                                                                     class="feather-icon"></i></button>
                                                         </a>
                                                         <button type="button" data-toggle="modal"
