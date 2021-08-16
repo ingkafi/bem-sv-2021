@@ -40,6 +40,7 @@
                             </td>
                             @endif
                         </div>
+                        <hr>
                         <div class="d-flex align-items-center mb-4">
                             <h3 class="card-title">Tabel Aspirasi </h3>
                         </div>
