@@ -11,6 +11,13 @@
                     <h1 data-aos="fade-up" data-aos-delay="500" style="color: #ffbc12">Buletin TERKINI</h1>
                 </div>
             </div>
+            @if ($buletin1 == ''){
+            <div class="col-lg-8 col-md-10 mx-auto col-12 text-center" data-aos="fade-up" data-aos-delay="400">
+                <br>
+                <p style="color : white;"><i>- tidak ada bicara data - </i></p>
+            </div>
+            }
+            @else{
             <div class="col-lg-8 col-md-10 mx-auto col-12" data-aos="fade-up" data-aos-delay="400">
                 <?php
                 $monthNum = date('m', strtotime($buletin1->created_at));
@@ -33,6 +40,8 @@
                     </div>
                 </div>
             </div>
+            }
+            @endif
         </div>
     </div>
 </section>

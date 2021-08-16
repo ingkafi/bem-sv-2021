@@ -159,11 +159,11 @@
 
                 <div class="d-flex justify-content-center mx-auto col-lg-5 col-md-7 col-12">
                     <p> <br>
-                        <a href="#">© 2021 Copyright: <a rel="nofollow" href="#" target="_parent"> <b>
+                        <a href="/">© 2021 Copyright: <a rel="nofollow" href="/" target="_parent"> <b>
                                     bemsvundip.com</b></a>
                             <br>
                             Made With Love From
-                            <a rel="nofollow" href="#" target="_parent"><b>Saraf Design</b> </a>
+                            <a rel="nofollow" href="https://instagram.com/sarafdesign.id" target="_parent"><b>Saraf Design</b> </a>
                     </p>
                 </div>
 

@@ -16,8 +16,7 @@
     <link rel="stylesheet" href="{{ URL::asset('assets/css/font-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('assets/css/aos.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('assets/css/tooplate-gymso-style.css') }}">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     {{-- <link rel="stylesheet" href="css/font-awesome.min.css">
      <link rel="stylesheet" href="css/aos.css">
 
@@ -33,8 +32,7 @@
 
             <a class="navbar-brand" href="/">BEM SV UNDIP</a>
 
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -52,13 +50,12 @@
                         <a href="/proker" class="nav-link smoothScroll">Program Kerja</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Profil BEM SV
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             @foreach (App\Models\Kabinet::get() as $kab)
-                                <a class="dropdown-item" href="/profil/{{ $kab->tahun }}">{{ $kab->nama }}</a>
+                            <a class="dropdown-item" href="/profil/{{ $kab->tahun }}">{{ $kab->nama }}</a>
                             @endforeach
                         </div>
                     </li>
@@ -129,8 +126,7 @@
                     <h2 class="mb-0 pb-0" data-aos="fade-up" data-aos-delay="200">Punya Kritik & Saran?</h2>
                     <h2 class="mb-0 pb-2" data-aos="fade-up" data-aos-delay="200">Tulis Yuk!</h2>
 
-                    <form action="/aspirasi" method="post" class="contact-form webform" data-aos="fade-up"
-                        data-aos-delay="400" role="form">
+                    <form action="/aspirasi" method="post" class="contact-form webform" data-aos="fade-up" data-aos-delay="400" role="form">
                         @method('patch')
                         @csrf
                         <input type="text" class="form-control" name="nama" placeholder="Nama (Opsional)">
@@ -152,8 +148,7 @@
                                  4. Copy only URL and paste it within the src="" field below
                                 -->
                     <div class="google-map" data-aos="fade-up" data-aos-delay="900">
-                        <iframe src="{{ $tampilan->link_maps }}" width="700" height="400" frameborder="0"
-                            style="border:0;" allowfullscreen=""></iframe>
+                        <iframe src="{{ $tampilan->link_maps }}" width="700" height="400" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
                     </div>
                 </div>
 
@@ -174,7 +169,7 @@
 
                 <div class="d-flex justify-content-center mx-auto col-lg-5 col-md-7 col-12">
                     <p> <br>
-                        <a href="#">© 2021 Copyright: <a rel="nofollow" href="#" target="_parent"> <b>
+                        <a href="/">© 2021 Copyright: <a rel="nofollow" href="/" target="_parent"> <b>
                                     bemsvundip.com</b></a>
                             <br>
                             Made With Love From
