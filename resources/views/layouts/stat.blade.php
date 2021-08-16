@@ -117,10 +117,13 @@
                     <h2 class="mb-0 pb-0" data-aos="fade-up" data-aos-delay="200">Punya Kritik & Saran?</h2>
                     <h2 class="mb-0 pb-2" data-aos="fade-up" data-aos-delay="200">Tulis Yuk!</h2>
 
-                    <form action="/aspirasi" method="post" class="contact-form webform" data-aos="fade-up" data-aos-delay="400" role="form">
+                    <form action="/aspirasistat" method="post" class="contact-form webform" data-aos="fade-up" data-aos-delay="400" role="form">
                         @method('patch')
                         @csrf
-                        <input type="text" class="form-control" name="nama" placeholder="Nama">
+                        <input type="text" class="form-control" name="nama" placeholder="Nama (Opsional)">
+                        @if($emailaspirasi->status == 1)
+                        <input type="email" class="form-control" name="email" placeholder="Email">
+                        @endif
                         <textarea class="form-control" rows="11" name="isi" placeholder="Pesan"></textarea>
                         <button type="submit" class="form-control" id="submit-button" name="submit">Kirim</button>
                     </form>

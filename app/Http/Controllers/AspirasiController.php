@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Aspirasi;
+use App\Models\emailaspirasi;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\DB;
@@ -17,7 +18,8 @@ class AspirasiController extends Controller
     public function index()
     {
         $aspirasi = DB::table('aspirasis')->get()->sortByDesc('created_at');
-        return view('admin/bem/aspirasi/index', ['aspirasi' => $aspirasi]);
+        $emailaspirasi = DB::table('emailaspirasis')->first();
+        return view('admin/bem/aspirasi/index', ['aspirasi' => $aspirasi, 'emailaspirasi' => $emailaspirasi]);
     }
 
     /**
@@ -39,11 +41,11 @@ class AspirasiController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama' => 'required',
             'isi' => 'required',
         ]);
         $form_data = array(
             'nama'       =>   $request->nama,
+            'email'       =>   $request->email,
             'isi'        =>   $request->isi,
         );
         Aspirasi::create($form_data);
@@ -51,15 +53,49 @@ class AspirasiController extends Controller
         return redirect()->action([PagesController::class, 'home']);
     }
 
+    public function storestat(Request $request)
+    {
+        $request->validate([
+            'isi' => 'required',
+        ]);
+        $form_data = array(
+            'nama'       =>   $request->nama,
+            'email'       =>   $request->email,
+            'isi'        =>   $request->isi,
+        );
+        Aspirasi::create($form_data);
+        Alert::success('Berhasil', 'Terima kasih atas kritk dan sarannya!');
+        return redirect()->action([PagesController::class, 'homestat']);
+    }
+
     /**
-     * Display the specified resource.
+     * Update the specified resource in storage.
      *
-     * @param  \App\Models\Aspirasi  $aspirasi
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Emailaspirasi  $info
      * @return \Illuminate\Http\Response
      */
-    public function show(Aspirasi $aspirasi)
+    public function show()
     {
-        //
+        $Emailaspirasi = Emailaspirasi::where('id',  1)->first();
+
+        $Emailaspirasi->status = '1';
+
+        $Emailaspirasi->save();
+        Alert::success('Berhasil', 'Email pada Aspirasi Berhasil Ditampilkan');
+        // dd($request);
+        return redirect()->action([AspirasiController::class, 'index']);
+    }
+    public function hide(Request $request)
+    {
+        $Emailaspirasi = Emailaspirasi::where('id',  1)->first();
+
+        $Emailaspirasi->status = '0';
+
+        $Emailaspirasi->save();
+        Alert::success('Berhasil', 'Email pada Aspirasi Berhasil Disembunyikan');
+        // dd($request);
+        return redirect()->action([AspirasiController::class, 'index']);
     }
 
     /**

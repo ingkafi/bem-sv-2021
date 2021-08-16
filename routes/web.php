@@ -32,6 +32,7 @@ Route::get('/info/{info}/show', [PagesController::class, 'showinformasi']);
 Route::get('/proker', [PagesController::class, 'proker']);
 Route::get('/profil/{tahun}', [PagesController::class, 'profil']);
 Route::patch('/aspirasi', [AspirasiController::class, 'store']);
+Route::patch('/aspirasistat', [AspirasiController::class, 'storestat']);
 
 //statdiary
 Route::get('/statdiary', [PagesController::class, 'homestat']);
@@ -83,6 +84,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     //Aspirasi
     Route::get('/admin/bem/aspirasi', [AspirasiController::class, 'index'])->name('index');
+    Route::get('/admin/bem/aspirasi/show', [AspirasiController::class, 'show'])->name('show');
+    Route::get('/admin/bem/aspirasi/hide', [AspirasiController::class, 'hide'])->name('hide');
 
     //PROGRAM
     Route::get('/admin/bem/program', [ProkerController::class, 'index'])->name('index');
@@ -138,7 +141,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::patch('/admin/statistik/buletin/{buletin}/update', [BuletinController::class, 'update'])->name('update');
     Route::get('/admin/statistik/buletin/{buletin}/show', [BuletinController::class, 'show'])->name('show');
     Route::get('/admin/statistik/buletin/{buletin}/hide', [BuletinController::class, 'hide'])->name('hide');
-    
+
     //kabinet
     Route::get('/admin/bem/kabinet', [KabinetController::class, 'index'])->name('index');
     Route::get('/admin/bem/kabinet/create', [KabinetController::class, 'create'])->name('create');

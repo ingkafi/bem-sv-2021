@@ -26,7 +26,8 @@ class PagesController extends Controller
         $info1 = $infoall->sortByDesc('created_at')->first();
         $tampilan = Tampilan::first();
         $infos = DB::table('infos')->where('id', '!=', $info1->id)->get()->sortBy('created_at');
-        return view('/main/index', compact('tampilan', 'infos', 'info1'));
+        $emailaspirasi = DB::table('emailaspirasis')->first();
+        return view('/main/index', compact('tampilan', 'infos', 'info1', 'emailaspirasi'));
     }
     public function homestat()
     {
@@ -37,21 +38,24 @@ class PagesController extends Controller
         $struktur5 = DB::table('struktur_stats')->where('kode_jabatan', '5')->get()->sortBy('created_at');
         $tampilan = Tampilan::first();
         $infos = DB::table('infos')->get()->sortBy('created_at');
-        return view('/statdiary/index', compact('tampilan', 'infos', 'struktur1', 'struktur2', 'struktur3', 'struktur4', 'struktur5'));
+        $emailaspirasi = DB::table('emailaspirasis')->first();
+        return view('/statdiary/index', compact('tampilan', 'infos', 'struktur1', 'struktur2', 'struktur3', 'struktur4', 'struktur5', 'emailaspirasi'));
     }
     public function databasestat()
     {
         $tampilan = Tampilan::first();
         $dba = DatabaseAngka::first();
         $databases = DB::table('databases')->get()->sortByDesc('created_at');
-        return view('/statdiary/database', compact('tampilan', 'dba', 'databases'));
+        $emailaspirasi = DB::table('emailaspirasis')->first();
+        return view('/statdiary/database', compact('tampilan', 'dba', 'databases', 'emailaspirasi'));
     }
 
     public function  detaildatabase($db)
     {
         $databases = DB::table('databases')->where('id',  $db)->first();
         $tampilan = Tampilan::first();
-        return view('/statdiary/detaildatabase', compact('tampilan', 'databases'));
+        $emailaspirasi = DB::table('emailaspirasis')->first();
+        return view('/statdiary/detaildatabase', compact('tampilan', 'databases', 'emailaspirasi'));
     }
 
     public function datastat()
@@ -60,7 +64,8 @@ class PagesController extends Controller
         $buletin1 = $buletinall->sortByDesc('created_at')->first();
         $buletinpag = DB::table('buletins')->where('status', '1')->orderBy('created_at', 'desc')->simplePaginate(3);
         $tampilan = Tampilan::first();
-        return view('/statdiary/bicara-data', compact('tampilan', 'buletinall', 'buletin1', 'buletinpag'));
+        $emailaspirasi = DB::table('emailaspirasis')->first();
+        return view('/statdiary/bicara-data', compact('tampilan', 'buletinall', 'buletin1', 'buletinpag', 'emailaspirasi'));
     }
     public function  detailbicaradata($bicara)
     {
@@ -69,7 +74,8 @@ class PagesController extends Controller
         $buletins = $buletinall->where('id', '!=', $buletin1->id);
         $buletin = DB::table('buletins')->where('id',  $bicara)->first();
         $tampilan = Tampilan::first();
-        return view('/statdiary/detailbicaradata', compact('tampilan', 'buletinall', 'buletin1', 'buletins', 'buletin'));
+        $emailaspirasi = DB::table('emailaspirasis')->first();
+        return view('/statdiary/detailbicaradata', compact('tampilan', 'buletinall', 'buletin1', 'buletins', 'buletin', 'emailaspirasi'));
     }
     public function surveystat()
     {
@@ -77,7 +83,8 @@ class PagesController extends Controller
         $survei1 = $surveiall->sortByDesc('created_at')->first();
         $surveipag = DB::table('surveis')->where('status', '1')->orderBy('created_at', 'desc')->simplePaginate(3);
         $tampilan = Tampilan::first();
-        return view('/statdiary/survey', compact('tampilan', 'surveipag', 'surveiall', 'survei1'));
+        $emailaspirasi = DB::table('emailaspirasis')->first();
+        return view('/statdiary/survey', compact('tampilan', 'surveipag', 'surveiall', 'survei1', 'emailaspirasi'));
     }
 
     public function detailsurveystat($survey)
@@ -87,19 +94,22 @@ class PagesController extends Controller
         $surveis = $surveiall->where('id', '!=', $survei1->id);
         $survey = DB::table('surveis')->where('id',  $survey)->first();
         $tampilan = Tampilan::first();
-        return view('/statdiary/detailsurvey', compact('tampilan', 'surveiall', 'survei1', 'surveis', 'survey'));
+        $emailaspirasi = DB::table('emailaspirasis')->first();
+        return view('/statdiary/detailsurvey', compact('tampilan', 'surveiall', 'survei1', 'surveis', 'survey', 'emailaspirasi'));
     }
     public function proker()
     {
         $prokers =  Proker::get();
         $tampilan = Tampilan::first();
-        return view('/main/proker', compact('tampilan', 'prokers'));
+        $emailaspirasi = DB::table('emailaspirasis')->first();
+        return view('/main/proker', compact('tampilan', 'prokers', 'emailaspirasi'));
     }
     public function profil(Request $request)
     {
         $tampilan = Tampilan::first();
         $struktur = DB::table('strukturs')->where('tahun', $request->route('tahun'))->get();
-        return view('/main/profil', compact('tampilan', 'struktur'));
+        $emailaspirasi = DB::table('emailaspirasis')->first();
+        return view('/main/profil', compact('tampilan', 'struktur', 'emailaspirasi'));
     }
     public function informasi()
     {
@@ -107,13 +117,15 @@ class PagesController extends Controller
         $info1 = $infoall->sortByDesc('created_at')->first();
         $infopag = DB::table('infos')->where('status', '1')->orderBy('created_at', 'desc')->simplePaginate(3);
         $tampilan = Tampilan::first();
-        return view('/main/info', compact('tampilan', 'info1', 'infoall', 'infopag'));
+        $emailaspirasi = DB::table('emailaspirasis')->first();
+        return view('/main/info', compact('tampilan', 'info1', 'infoall', 'infopag', 'emailaspirasi'));
     }
     public function showinformasi(Info $info)
     {
         $info = DB::table('infos')->where('id', $info->id)->first();
         $tampilan = Tampilan::first();
-        return view('/main/showinfo', compact('tampilan', 'info'));
+        $emailaspirasi = DB::table('emailaspirasis')->first();
+        return view('/main/showinfo', compact('tampilan', 'info', 'emailaspirasi'));
     }
 
 

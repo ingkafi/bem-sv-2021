@@ -130,7 +130,9 @@
                         @method('patch')
                         @csrf
                         <input type="text" class="form-control" name="nama" placeholder="Nama (Opsional)">
-                        <input type="email" class="form-control" name="nama" placeholder="Email">
+                        @if($emailaspirasi->status == 1)
+                        <input type="email" class="form-control" name="email" placeholder="Email">
+                        @endif
                         <textarea class="form-control" rows="11" name="isi" placeholder="Pesan"></textarea>
                         <button type="submit" class="form-control" id="submit-button" name="submit">Kirim</button>
                     </form>

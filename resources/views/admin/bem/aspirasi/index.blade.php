@@ -25,6 +25,22 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex align-items-center mb-4">
+                            @if ($emailaspirasi->status == '1')
+                            <h3 style="padding-right: 1%; padding-top: 1%;">Sembunyikan Formulir Email</h3>
+                            <td>
+                                <a href="/admin/bem/aspirasi/hide">
+                                    <button type="button" class="btn waves-effect waves-light btn-rounded btn-warning" title="Visible"><i data-feather="eye" class="feather-icon"></i></button>
+                            </td>
+                            @elseif ($emailaspirasi->status == '0')
+                            <h3 style="padding-right: 1%; padding-top: 1%;">Tampilkan Formulir Email</h3>
+                            <td>
+                                <a href="/admin/bem/aspirasi/show">
+                                    <button type="button" class="btn  waves-effect waves-light btn-rounded btn-outline-warning" title="Visible"><i data-feather="eye-off" class="feather-icon"></i></button>
+                                </a>
+                            </td>
+                            @endif
+                        </div>
+                        <div class="d-flex align-items-center mb-4">
                             <h3 class="card-title">Tabel Aspirasi </h3>
                         </div>
                         <div class="table-responsive">
@@ -35,8 +51,10 @@
                                         </th>
                                         <th class="border-0 font-14 font-weight-medium">Nama
                                         </th>
-                                        <th class="border-0 font-14 font-weight-medium">Pesan
+                                        <th class="border-0 font-14 font-weight-medium">email
                                         </th>
+                                        </th>
+                                        <th class="border-0 font-14 font-weight-medium">Pesan
                                         <th class="border-0 font-14 font-weight-medium">Tanggal
                                         </th>
 
@@ -60,6 +78,9 @@
                                     </h5>
                                 </div>
                             </div>
+                        </td>
+                        <td>
+                            {{ $row->email }}
                         </td>
                         <td>
                             {{ $row->isi }}

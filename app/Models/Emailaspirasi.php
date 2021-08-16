@@ -5,8 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Aspirasi extends Model
+class Emailaspirasi extends Model
 {
-    protected $table = "aspirasis";
-    protected $fillable = ['nama', 'isi', 'email'];
+    protected $table = "emailaspirasis";
+    protected $fillable = ['status'];
 }
