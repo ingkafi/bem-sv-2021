@@ -73,11 +73,15 @@
                                                 </td>
                                                 @if ($row->status == '1')
                                                     <td>
-                                                        Aktif
+                                                        <button type="button" disabled
+                                                            class="btn waves-effect waves-light btn-sm btn-rounded btn-success">
+                                                            Aktif</button>
                                                     </td>
                                                 @elseif ($row->status == '0')
                                                     <td>
-                                                        Tidak Aktif
+                                                        <button type="button" disabled
+                                                            class="btn waves-effect waves-light btn-sm btn-rounded btn-secondary">
+                                                            Tidak Aktif</button>
                                                     </td>
                                                 @endif
                                                 @if ($row->visibility == '1')

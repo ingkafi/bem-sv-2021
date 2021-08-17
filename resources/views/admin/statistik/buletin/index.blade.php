@@ -79,7 +79,7 @@
                                                 </td>
                                                 @if ($row->status == '1')
                                                     <td class=" font-weight-medium text-success">
-                                                        <button type="button"
+                                                        <button type="button" disabled
                                                             class="btn waves-effect waves-light btn-sm btn-rounded btn-success">
                                                             Data Selesai Diproses</button>
                                                     </td>
@@ -98,8 +98,8 @@
                                                     </td>
                                                 @elseif ($row->status == '0')
                                                     <td class=" font-weight-medium text-success">
-                                                        <button type="button"
-                                                            class="btn waves-effect waves-light btn-sm btn-rounded btn-danger">
+                                                        <button type="button" disabled
+                                                            class="btn waves-effect waves-light btn-sm btn-rounded btn-secondary">
                                                             Data Masih Diproses</button>
                                                     </td>
                                                     <td>

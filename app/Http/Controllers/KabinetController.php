@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kabinet;
+use App\Models\StrukturStat;
+use App\Models\Struktur;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -95,16 +97,21 @@ class KabinetController extends Controller
     }
     public function active(Request $request)
     {
-        $kabinet1 = Kabinet::where('status', '1')->first();
         $kabinet = Kabinet::where('id',  $request->route('kabinet'))->first();
-        $kabinet1->status = '0';
-        $kabinet1->save();
-        $kabinet->status = '1';
-        $kabinet->save();
-
-        Alert::success('Berhasil', 'Kabinet Berhasil Diaktifkan');
-        // dd($request);
-        return redirect()->action([KabinetController::class, 'index']);
+        $struktur = Struktur::where('tahun', $kabinet->tahun)->first();
+        if ($struktur === null) {
+            Alert::error('Gagal', 'Struktur dalam kabinet tidak ditemukan, tambahkan struktur sebelum mengaktifkan kabinet');
+            return redirect()->action([KabinetController::class, 'index']);
+        }
+        else{
+            $kabinet1 = Kabinet::where('status', '1')->first();
+            $kabinet1->status = '0';
+            $kabinet1->save();
+            $kabinet->status = '1';
+            $kabinet->save();
+            Alert::success('Berhasil', 'Kabinet Berhasil Diaktifkan');
+            return redirect()->action([KabinetController::class, 'index']);
+        }
     }
     public function show(Request $request)
     {
