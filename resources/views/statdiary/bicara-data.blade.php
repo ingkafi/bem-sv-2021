@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-lg-8 col-md-10 mx-auto col-12">
                 <div class="hero-text mt-5 text-center">
-                    <h1 data-aos="fade-up" data-aos-delay="500" style="color: #ffbc12">Buletin TERKINI</h1>
+                    <h1 data-aos="fade-up" data-aos-delay="500" style="color: #ffbc12">BICARA DATA TERKINI</h1>
                 </div>
             </div>
             @if ($buletin1 == ''){
@@ -52,7 +52,7 @@
             <div class="col-lg-4 col-4 text-center">
             </div>
             <div class="col-lg-4 col-4 text-center">
-                <h6 data-aos="fade-up">Jumlah Buletin</h6>
+                <h6 data-aos="fade-up">Jumlah Bicara Data</h6>
                 <h2 class="text-white count" data-aos="fade-up" data-aos-delay="200"> {{ $buletinall->count() }}</h2>
             </div>
             <div class="col-lg-4 col-4 text-center">
@@ -64,7 +64,7 @@
     <div class="container">
         <div class="col-12">
             <div class="hero-text mt-5 text-center">
-                <h1 data-aos="fade-up" data-aos-delay="500" style="color: black">BULETIN LAINNYA</h1><br><br>
+                <h1 data-aos="fade-up" data-aos-delay="500" style="color: black">BICARA DATA LAINNYA</h1><br><br>
             </div>
         </div>
         <div class="row">
