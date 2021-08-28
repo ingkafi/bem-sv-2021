@@ -36,10 +36,12 @@ class PagesController extends Controller
         $struktur3 = DB::table('struktur_stats')->where('kode_jabatan', '3')->get()->first();
         $struktur4 = DB::table('struktur_stats')->where('kode_jabatan', '4')->get()->sortBy('created_at');
         $struktur5 = DB::table('struktur_stats')->where('kode_jabatan', '5')->get()->sortBy('created_at');
+        $struktur4ketua = DB::table('struktur_stats')->where('kode_jabatan', '41')->get()->first();
+        $struktur5ketua = DB::table('struktur_stats')->where('kode_jabatan', '51')->get()->first();
         $tampilan = Tampilan::first();
         $infos = DB::table('infos')->get()->sortBy('created_at');
         $emailaspirasi = DB::table('emailaspirasis')->first();
-        return view('/statdiary/index', compact('tampilan', 'infos', 'struktur1', 'struktur2', 'struktur3', 'struktur4', 'struktur5', 'emailaspirasi'));
+        return view('/statdiary/index', compact('tampilan', 'infos', 'struktur1', 'struktur2', 'struktur3', 'struktur4', 'struktur5', 'emailaspirasi','struktur4ketua','struktur5ketua'));
     }
     public function databasestat()
     {

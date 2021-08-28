@@ -43,7 +43,9 @@
                                     <option value="1">Kepala Biro Statistik</option>
                                     <option value="2">Wakil Kepala Biro Statistik</option>
                                     <option value="3">Sekben Biro Statistik</option>
+                                    <option value="41">Ketua Divisi Survei dan Penelitian</option>
                                     <option value="4">Divisi Survei dan Penelitian</option>
+                                    <option value="51">Ketua Divisi Analisis Data dan Database </option>
                                     <option value="5">Divisi Analisis Data dan Database </option>
                                 </select>
                                 @error('kode_jabatan')
